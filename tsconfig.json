@@ -1,0 +1,60 @@
+{
+  "compilerOptions": {
+    // Project setup and output
+    "target": "ES2022",              // Modern ECMAScript target, compatible with Node.js 18+
+    "module": "preserve",            // Use Node's ESM resolution (TypeScript 4.7+), aligns with "module": "nodenext" in package.json
+    "moduleDetection": "force",
+    "outDir": "./dist",              // Output directory for compiled JS files
+    "baseUrl": ".",                  // Base directory for module resolution
+    "sourceMap": true,               // Generate source maps for debugging
+    "declaration": true,             // Generate .d.ts files for type definitions
+    "declarationMap": true,          // Enable source maps for .d.ts files (useful for libraries)
+    "declarationDir": "./typings",   // Output directory for generated declaration files
+
+    // Strict type checking (maximizing TypeScript's safety)
+    "strict": true,                  // Enable all strict mode flags
+    "noImplicitAny": true,           // Disallow implicit 'any' types
+    "strictNullChecks": true,        // Enforce null/undefined checks
+    "strictFunctionTypes": true,     // Stricter function type checking
+    "strictBindCallApply": true,     // Strict checking for bind/call/apply
+    "noImplicitThis": true,          // Prevent 'this' from being implicitly 'any'
+    "alwaysStrict": true,            // Emit "use strict" in JS output
+    "noImplicitOverride": true,      // Ensure explicit 'override' keyword usage (TypeScript 4.3+)
+
+    // Additional safety checks
+    "noUnusedLocals": true,          // Report unused local variables
+    "noUnusedParameters": true,      // Report unused parameters
+    "noImplicitReturns": true,       // Ensure all code paths return a value
+    "noFallthroughCasesInSwitch": true, // Prevent switch case fallthrough
+    "exactOptionalPropertyTypes": true, // Stricter optional property behavior (TypeScript 4.4+)
+    "useDefineForClassFields": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Module and import optimizations
+    "esModuleInterop": true,         // Enable interop between CommonJS and ESM
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules without exports
+    "verbatimModuleSyntax": true,    // Preserve import/export syntax as written (TypeScript 5.0+, replaces older flags)
+    "isolatedModules": true,         // Ensure compatibility with tools like esbuild/Bun
+    "resolveJsonModule": true,       // Allow importing .json files
+    "importHelpers": true,           // Use tslib for helper functions to reduce bundle size
+    "stripInternal": true,           // Remove type imports from output
+    "removeComments": true,          // Remove comments from output
+    "preserveConstEnums": true,
+
+    // New TypeScript 5.8 features
+    "erasableSyntaxOnly": true,      // Enforce pure type annotations, stripping enums/namespaces (TypeScript 5.8+)
+    "libReplacement": false,         // Disable automatic lib replacement lookup (TypeScript 5.8+, optimize performance unless needed)
+
+    // Library and environment setup
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "typeRoots": ["node_modules/@types/", "./types/"],        // Include modern JS APIs and DOM (adjust based on environment)
+
+    // Performance optimizations
+    "skipLibCheck": true,            // Skip type checking of declaration files for faster compilation
+    "incremental": true,             // Enable incremental compilation for faster rebuilds
+    "tsBuildInfoFile": "node_modules/.tmp/.tsbuildinfo" // Store incremental build info
+  },
+  // File inclusion/exclusion
+  "include": ["src/**/*", "test/**/*"],          // Include all files in src directory
+  "exclude": ["node_modules", "dist"] // Exclude build output and dependencies
+}

@@ -1,0 +1,44 @@
+{
+  "name": "compresso",
+  "version": "1.0.0",
+  "description": "Debloat your code with a nice cup of compresso",
+  "types": "./index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "lint": "eslint src",
+    "test": "vitest"
+  },
+  "keywords": ["utility", "library", "tool-kit", "tools", "compression"],
+  "author": "Torathion",
+  "homepage": "https://github.com/Torathion/compresso",
+  "type": "module",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Torathion/compresso.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Torathion/compresso/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^3.0.8",
+    "benchmark": "^2.1.4",
+    "esbuild": "^0.25.1",
+    "eslint": "^9.22.0",
+    "eslint-config-shiny": "^4.1.0",
+    "knip": "^5.45.0",
+    "typescript": "^5.8.2",
+    "typestar": "^1.8.0",
+    "vitest": "^3.0.8"
+  }
+}
