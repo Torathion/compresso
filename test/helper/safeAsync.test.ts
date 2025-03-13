@@ -45,17 +45,12 @@ describe('safeAsync', () => {
   })
 
   it('should handle different types of errors', async () => {
-    const errors = [
-      new Error('Standard error'),
-      new TypeError('Type error'),
-      'string error',
-      null,
-      undefined,
-      123
-    ]
+    const errors = [new Error('Standard error'), new TypeError('Type error'), 'string error', null, undefined, 123]
 
     for (const error of errors) {
-      const asyncFn = async () => { throw error }
+      const asyncFn = async () => {
+        throw error
+      }
       const safeFn = safeAsync(asyncFn)
 
       const result = await safeFn()

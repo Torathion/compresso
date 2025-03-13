@@ -16,7 +16,11 @@ class ThrowingClass {
 }
 
 class MultipleArgsClass {
-  constructor(public a: number, public b: string, public c: boolean) {}
+  constructor(
+    public a: number,
+    public b: string,
+    public c: boolean
+  ) {}
 }
 
 class NoArgsClass {
@@ -61,12 +65,7 @@ describe('safeConstruct', () => {
   })
 
   it('should handle different types of errors', () => {
-    const errors = [
-      new Error('Standard error'),
-      new TypeError('Type error'),
-      'string error',
-      123
-    ]
+    const errors = [new Error('Standard error'), new TypeError('Type error'), 'string error', 123]
 
     for (const error of errors) {
       class ErrorClass {
@@ -124,7 +123,10 @@ describe('safeConstruct', () => {
       constructor(public baseValue: string) {}
     }
     class DerivedClass extends BaseClass {
-      constructor(baseValue: string, public derivedValue: number) {
+      constructor(
+        baseValue: string,
+        public derivedValue: number
+      ) {
         super(baseValue)
       }
     }

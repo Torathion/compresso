@@ -1,4 +1,4 @@
-import type { Table } from "typestar";
+import type { Table } from 'typestar'
 
 /**
  *  Deletes a specified property from an object.

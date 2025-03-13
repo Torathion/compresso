@@ -1,4 +1,4 @@
-import type { WithReadonly } from "typestar"
+import type { WithReadonly } from 'typestar'
 
 /**
  *	Binary searches an index inside a sorted array.
@@ -10,7 +10,13 @@ import type { WithReadonly } from "typestar"
  * @param max - the maximum index of the array
  * @returns the index of the target element.
  */
-export default function sortedIndexOf<T>(arr: WithReadonly<T[]>, value: T, comparator: (a: T, b: T) => number, min = 0, max = arr.length - 1): number {
+export default function sortedIndexOf<T>(
+  arr: WithReadonly<T[]>,
+  value: T,
+  comparator: (a: T, b: T) => number,
+  min = 0,
+  max = arr.length - 1
+): number {
   let currIndex: number, compareResult: number, x: T
   while (min <= max) {
     currIndex = (min + max) >>> 1

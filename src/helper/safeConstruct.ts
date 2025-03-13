@@ -1,4 +1,4 @@
-import type { ClassConstructor } from "typestar"
+import type { ClassConstructor } from 'typestar'
 
 /**
  *  Wraps a class constructor to safely create instances, returning `undefined`
@@ -8,9 +8,9 @@ import type { ClassConstructor } from "typestar"
  *  @returns A wrapped constructor function that returns an instance of T or undefined
  */
 export default function safeConstruct<T>(ctor: ClassConstructor<T>): (...args: any[]) => T | undefined {
-    return (...args: ConstructorParameters<ClassConstructor<T>>): T | undefined => {
-        try {
-            return new ctor(...args)
-        } catch {}
-    }
+  return (...args: ConstructorParameters<ClassConstructor<T>>): T | undefined => {
+    try {
+      return new ctor(...args)
+    } catch {}
+  }
 }

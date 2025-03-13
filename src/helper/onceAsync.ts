@@ -1,6 +1,6 @@
-import { refMergeObj } from "src/constants";
-import type { AsyncOnceFunction } from "src/types";
-import type { AnyFunction } from "typestar";
+import { refMergeObj } from 'src/constants'
+import type { AsyncOnceFunction } from 'src/types'
+import type { AnyFunction } from 'typestar'
 
 /**
  * Creates an async function that executes only once and caches its result.
@@ -14,12 +14,12 @@ import type { AnyFunction } from "typestar";
  * @returns A wrapped async function that runs once and caches its result.
  */
 export default function onceAsync<T extends AnyFunction>(fn: T): AsyncOnceFunction<T> {
-    const f: AsyncOnceFunction<T> = (async (...args: Parameters<T>): Promise<ReturnType<T>> => {
-        if (f.called) return f.value!;
-        f.called = true;
-        return (f.value = await fn(...args));
-    }) as any;
-    f.called = false;
-    refMergeObj(f, fn);
-    return f;
+  const f: AsyncOnceFunction<T> = (async (...args: Parameters<T>): Promise<ReturnType<T>> => {
+    if (f.called) return f.value!
+    f.called = true
+    return (f.value = await fn(...args))
+  }) as any
+  f.called = false
+  refMergeObj(f, fn)
+  return f
 }

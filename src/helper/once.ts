@@ -1,6 +1,6 @@
-import { refMergeObj } from "src/constants";
-import type { OnceFunction } from "src/types";
-import type { AnyFunction } from "typestar";
+import { refMergeObj } from 'src/constants'
+import type { OnceFunction } from 'src/types'
+import type { AnyFunction } from 'typestar'
 
 /**
  *  Creates a function that executes only once and caches its result.
@@ -14,12 +14,12 @@ import type { AnyFunction } from "typestar";
  *  @returns A wrapped function that runs once and caches its result.
  */
 export default function once<T extends AnyFunction>(fn: T): OnceFunction<T> {
-    const f: OnceFunction<T> = ((...args: Parameters<T>): ReturnType<T> => {
-        if (f.called) return f.value!;
-        f.called = true;
-        return (f.value = fn(...args));
-    }) as any;
-    f.called = false;
-    refMergeObj(f, fn);
-    return f;
+  const f: OnceFunction<T> = ((...args: Parameters<T>): ReturnType<T> => {
+    if (f.called) return f.value!
+    f.called = true
+    return (f.value = fn(...args))
+  }) as any
+  f.called = false
+  refMergeObj(f, fn)
+  return f
 }
