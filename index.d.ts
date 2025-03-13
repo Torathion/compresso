@@ -1,7 +1,7 @@
-import { AnyArray, AnyFunction, AnyNumberArray, AsyncFunction, ClassConstructor, HasToString, WithReadonly } from 'typestar';
+import { AnyArray, AnyFunction, AnyNumberArray, AsyncFunction, ClassConstructor, HasToString, WithReadonly } from 'typestar'
 // JSON methods
 
-import { AnyObject, MaybeArray, Table } from "typestar";
+import { AnyObject, MaybeArray, Table } from 'typestar'
 
 /**
  * Parses a JSON string and returns the JavaScript value.
@@ -10,7 +10,7 @@ import { AnyObject, MaybeArray, Table } from "typestar";
  * @returns The parsed JavaScript value.
  * @throws {SyntaxError} If the string to parse is not valid JSON.
  */
-export const parseJson: (text: string, reviver?: (this: any, key: string, value: any) => any) => any;
+export const parseJson: (text: string, reviver?: (this: any, key: string, value: any) => any) => any
 
 /**
  * Converts a JavaScript value to a JSON string.
@@ -24,7 +24,7 @@ export const stringify: (
   value: any,
   replacer?: (this: any, key: string, value: any) => any | Array<number | string> | null,
   space?: string | number
-) => string;
+) => string
 
 // Object methods
 /**
@@ -32,42 +32,325 @@ export const stringify: (
  * @param obj The object to freeze.
  * @returns The frozen object.
  */
-export const freeze: <T>(obj: T) => Readonly<T>;
+export const freeze: <T>(obj: T) => Readonly<T>
 
 /**
  * Determines if an object is extensible (whether it can have new properties added to it).
  * @param obj The object to test.
  * @returns Whether the object is extensible.
  */
-export const isExtensible: (obj: any) => boolean;
+export const isExtensible: (obj: any) => boolean
 
 /**
  * Determines if an object is frozen (cannot be modified).
  * @param obj The object to test.
  * @returns Whether the object is frozen.
  */
-export const isFrozen: (obj: any) => boolean;
+export const isFrozen: (obj: any) => boolean
 
 /**
  * Determines if an object is sealed (cannot add/remove properties but can modify existing ones).
  * @param obj The object to test.
  * @returns Whether the object is sealed.
  */
-export const isSealed: (obj: any) => boolean;
+export const isSealed: (obj: any) => boolean
 
 /**
  * Seals an object, preventing new properties from being added and marking all existing properties as non-configurable.
  * @param obj The object to seal.
  * @returns The sealed object.
  */
-export const seal: <T>(obj: T) => T;
+export const seal: <T>(obj: T) => T
 
 /**
  * Prevents new properties from being added to an object but allows modification of existing properties.
  * @param obj The object to restrict.
  * @returns The object with extensions prevented.
  */
-export const preventExtensions: <T>(obj: T) => T;
+export const preventExtensions: <T>(obj: T) => T
+
+/** Euler's number, the base of natural logarithms, approximately 2.718. */
+export const E: number;
+
+/** The natural logarithm of 10, approximately 2.303. */
+export const LN10: number;
+
+/** The natural logarithm of 2, approximately 0.693. */
+export const LN2: number;
+
+/** The base-10 logarithm of Euler's number (E), approximately 0.434. */
+export const LOG10E: number;
+
+/** The base-2 logarithm of Euler's number (E), approximately 1.443. */
+export const LOG2E: number;
+
+/** The mathematical constant π (pi), approximately 3.142. */
+export const PI: number;
+
+/** The square root of 1/2, approximately 0.707. */
+export const SQRT1_2: number;
+
+/** The square root of 2, approximately 1.414. */
+export const SQRT2: number;
+
+/**
+ * Calculates the largest value among the given numbers.
+ * @param values - Numbers to compare.
+ * @returns The largest number, or -Infinity if no arguments are provided.
+ */
+export const max: (...values: number[]) => number;
+
+/**
+ * Calculates the smallest value among the given numbers.
+ * @param values - Numbers to compare.
+ * @returns The smallest number, or Infinity if no arguments are provided.
+ */
+export const min: (...values: number[]) => number;
+
+/**
+ * Calculates the absolute value of a number.
+ * @param x - The number to evaluate.
+ * @returns The absolute value of the number.
+ */
+export const abs: (x: number) => number;
+
+/**
+ * Calculates the arccosine of a number (in radians).
+ * @param x - A number between -1 and 1.
+ * @returns The arccosine in radians, or NaN if x is outside [-1, 1].
+ */
+export const acos: (x: number) => number;
+
+/**
+ * Calculates the hyperbolic arccosine of a number.
+ * @param x - A number greater than or equal to 1.
+ * @returns The hyperbolic arccosine, or NaN if x < 1.
+ */
+export const acosh: (x: number) => number;
+
+/**
+ * Calculates the arcsine of a number (in radians).
+ * @param x - A number between -1 and 1.
+ * @returns The arcsine in radians, or NaN if x is outside [-1, 1].
+ */
+export const asin: (x: number) => number;
+
+/**
+ * Calculates the hyperbolic arcsine of a number.
+ * @param x - The number to evaluate.
+ * @returns The hyperbolic arcsine of the number.
+ */
+export const asinh: (x: number) => number;
+
+/**
+ * Calculates the arctangent of a number (in radians).
+ * @param x - The number to evaluate.
+ * @returns The arctangent in radians, between -π/2 and π/2.
+ */
+export const atan: (x: number) => number;
+
+/**
+ * Calculates the arctangent of the quotient of two numbers (in radians).
+ * @param y - The y-coordinate.
+ * @param x - The x-coordinate.
+ * @returns The arctangent of y/x in radians, between -π and π.
+ */
+export const atan2: (y: number, x: number) => number;
+
+/**
+ * Calculates the hyperbolic arctangent of a number.
+ * @param x - A number between -1 and 1.
+ * @returns The hyperbolic arctangent, or NaN if x is outside (-1, 1).
+ */
+export const atanh: (x: number) => number;
+
+/**
+ * Calculates the cube root of a number.
+ * @param x - The number to evaluate.
+ * @returns The cube root of the number.
+ */
+export const cbrt: (x: number) => number;
+
+/**
+ * Calculates the smallest integer greater than or equal to a number.
+ * @param x - The number to evaluate.
+ * @returns The ceiling of the number.
+ */
+export const ceil: (x: number) => number;
+
+/**
+ * Calculates the number of leading zero bits in the 32-bit binary representation of a number.
+ * @param x - The number to evaluate.
+ * @returns The count of leading zeros.
+ */
+export const clz32: (x: number) => number;
+
+/**
+ * Calculates the cosine of an angle (in radians).
+ * @param x - The angle in radians.
+ * @returns The cosine of the angle, between -1 and 1.
+ */
+export const cos: (x: number) => number;
+
+/**
+ * Calculates the hyperbolic cosine of a number.
+ * @param x - The number to evaluate.
+ * @returns The hyperbolic cosine of the number.
+ */
+export const cosh: (x: number) => number;
+
+/**
+ * Calculates Euler's number raised to the power of a number.
+ * @param x - The exponent.
+ * @returns E raised to the power x.
+ */
+export const exp: (x: number) => number;
+
+/**
+ * Calculates Euler's number raised to the power of a number minus 1.
+ * @param x - The exponent.
+ * @returns E^x - 1.
+ */
+export const expm1: (x: number) => number;
+
+/**
+ * Calculates the largest integer less than or equal to a number.
+ * @param x - The number to evaluate.
+ * @returns The floor of the number.
+ */
+export const floor: (x: number) => number;
+
+/**
+ * Calculates the nearest 32-bit single precision float representation of a number.
+ * @param x - The number to evaluate.
+ * @returns The 32-bit float representation.
+ */
+export const fround: (x: number) => number;
+
+/**
+ * Calculates the result of a 32-bit integer multiplication of two numbers.
+ * @param a - The first number.
+ * @param b - The second number.
+ * @returns The 32-bit integer product.
+ */
+export const imul: (a: number, b: number) => number;
+
+/**
+ * Calculates the natural logarithm (base e) of a number.
+ * @param x - A positive number.
+ * @returns The natural logarithm, or NaN if x <= 0.
+ */
+export const log: (x: number) => number;
+
+/**
+ * Calculates the base-10 logarithm of a number.
+ * @param x - A positive number.
+ * @returns The base-10 logarithm, or NaN if x <= 0.
+ */
+export const log10: (x: number) => number;
+
+/**
+ * Calculates the natural logarithm of (1 + x).
+ * @param x - A number greater than -1.
+ * @returns The natural logarithm of (1 + x), or NaN if x <= -1.
+ */
+export const log1p: (x: number) => number;
+
+/**
+ * Calculates the base-2 logarithm of a number.
+ * @param x - A positive number.
+ * @returns The base-2 logarithm, or NaN if x <= 0.
+ */
+export const log2: (x: number) => number;
+
+/**
+ * Calculates a number raised to the power of another number.
+ * @param base - The base number.
+ * @param exponent - The exponent.
+ * @returns The base raised to the power of the exponent.
+ */
+export const pow: (base: number, exponent: number) => number;
+
+/**
+ * Calculates a random number between 0 (inclusive) and 1 (exclusive).
+ * @returns A random number in the range [0, 1).
+ */
+export const random: () => number;
+
+/**
+ * Calculates the sign of a number.
+ * @param x - The number to evaluate.
+ * @returns 1 if positive, -1 if negative, 0 if zero, or NaN if not a number.
+ */
+export const sign: (x: number) => number;
+
+/**
+ * Calculates the sine of an angle (in radians).
+ * @param x - The angle in radians.
+ * @returns The sine of the angle, between -1 and 1.
+ */
+export const sin: (x: number) => number;
+
+/**
+ * Calculates the hyperbolic sine of a number.
+ * @param x - The number to evaluate.
+ * @returns The hyperbolic sine of the number.
+ */
+export const sinh: (x: number) => number;
+
+/**
+ * Calculates the square root of a number.
+ * @param x - A non-negative number.
+ * @returns The square root, or NaN if x < 0.
+ */
+export const sqrt: (x: number) => number;
+
+/**
+ * Calculates the tangent of an angle (in radians).
+ * @param x - The angle in radians.
+ * @returns The tangent of the angle.
+ */
+export const tan: (x: number) => number;
+
+/**
+ * Calculates the hyperbolic tangent of a number.
+ * @param x - The number to evaluate.
+ * @returns The hyperbolic tangent, between -1 and 1.
+ */
+export const tanh: (x: number) => number;
+
+/**
+ * Calculates the integer part of a number by removing fractional digits.
+ * @param x - The number to evaluate.
+ * @returns The integer part of the number.
+ */
+export const trunc: (x: number) => number;
+
+/** The difference between 1 and the smallest value greater than 1 that can be represented as a Number. */
+export const EPSILON: number;
+
+/** The largest integer safely representable in JavaScript, equal to 2^53 - 1. */
+export const MAX_SAFE_INTEGER: number;
+
+/**
+ * Determines whether a value is an integer.
+ * @param value - The value to check.
+ * @returns True if the value is an integer, false otherwise.
+ */
+export const isInteger: (value: any) => boolean;
+
+/**
+ * Determines whether a value is a safe integer (within the range of safe integers).
+ * @param value - The value to check.
+ * @returns True if the value is a safe integer, false otherwise.
+ */
+export const isSafeInteger: (value: any) => boolean;
+
+/** The largest positive finite value representable by the Number type. */
+export const MAX_NUM: number;
+
+/** The smallest positive value representable by the Number type. */
+export const MIN_NUM: number;
 
 /**
  * Merges the properties of one or more source objects into a target object.
@@ -75,7 +358,7 @@ export const preventExtensions: <T>(obj: T) => T;
  * @param sources One or more source objects.
  * @returns The target object with merged properties.
  */
-export const refMergeObj: <T, U>(target: T, ...sources: U[]) => T & U;
+export const refMergeObj: <T, U>(target: T, ...sources: U[]) => T & U
 
 /**
  * Defines a new property directly on an object or modifies an existing property.
@@ -84,18 +367,14 @@ export const refMergeObj: <T, U>(target: T, ...sources: U[]) => T & U;
  * @param descriptor The descriptor for the property being defined or modified.
  * @returns The object with the defined property.
  */
-export const defineProp: (
-  obj: any,
-  prop: PropertyKey,
-  descriptor: PropertyDescriptor
-) => any;
+export const defineProp: (obj: any, prop: PropertyKey, descriptor: PropertyDescriptor) => any
 
 /**
  * Returns the prototype of the specified object.
  * @param obj The object whose prototype is to be returned.
  * @returns The prototype of the object, or null if there is no inherited prototype.
  */
-export const getProto: (obj: any) => any;
+export const getProto: (obj: any) => any
 
 /**
  * Returns the property descriptor for an own property of the specified object.
@@ -103,10 +382,7 @@ export const getProto: (obj: any) => any;
  * @param prop The name or symbol of the property.
  * @returns The property descriptor, or undefined if the property does not exist.
  */
-export const getPropDescriptor: (
-  obj: any,
-  prop: PropertyKey
-) => PropertyDescriptor | undefined;
+export const getPropDescriptor: (obj: any, prop: PropertyKey) => PropertyDescriptor | undefined
 
 /**
  * Sets the prototype of a specified object to another object or null.
@@ -114,14 +390,14 @@ export const getPropDescriptor: (
  * @param proto The new prototype, or null.
  * @returns The object with the updated prototype.
  */
-export const setProto: (obj: any, proto: object | null) => any;
+export const setProto: (obj: any, proto: object | null) => any
 
 /**
  * Returns an array of a given object's own enumerable property [key, value] pairs.
  * @param obj The object whose enumerable own property entries are to be returned.
  * @returns An array of the object's own enumerable property entries.
  */
-export const entriesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => [string, T][];
+export const entriesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => [string, T][]
 
 /**
  * Determines whether an object has a property with the specified name as its own property.
@@ -129,7 +405,7 @@ export const entriesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => [string, 
  * @param prop The property name or symbol to test.
  * @returns Whether the object has the specified property as its own property.
  */
-export const hasProp: (obj: any, prop: PropertyKey) => boolean;
+export const hasProp: (obj: any, prop: PropertyKey) => boolean
 
 // String methods
 /**
@@ -137,7 +413,7 @@ export const hasProp: (obj: any, prop: PropertyKey) => boolean;
  * @param codePoints One or more UTF-16 code units.
  * @returns A string consisting of the specified code units.
  */
-export const fromCharCode: (...codePoints: number[]) => string;
+export const fromCharCode: (...codePoints: number[]) => string
 
 /**
  * Returns a string created from the specified sequence of Unicode code points.
@@ -145,7 +421,7 @@ export const fromCharCode: (...codePoints: number[]) => string;
  * @returns A string consisting of the specified code points.
  * @throws {RangeError} If an invalid code point is provided.
  */
-export const fromCodePoint: (...codePoints: number[]) => string;
+export const fromCodePoint: (...codePoints: number[]) => string
 
 // Error methods
 /**
@@ -153,10 +429,7 @@ export const fromCodePoint: (...codePoints: number[]) => string;
  * @param targetObject The object to attach the stack trace to.
  * @param constructorOpt Optional constructor function to start the stack trace from.
  */
-export const createStackTrace: (
-  targetObject: object,
-  constructorOpt?: Function
-) => void;
+export const createStackTrace: (targetObject: object, constructorOpt?: Function) => void
 
 /**
  * Prepares a stack trace string for an error.
@@ -164,10 +437,7 @@ export const createStackTrace: (
  * @param structuredStackTrace The structured stack trace.
  * @returns The formatted stack trace string.
  */
-export const prepareStackTrace: (
-  error: Error,
-  structuredStackTrace: NodeJS.CallSite[]
-) => any;
+export const prepareStackTrace: (error: Error, structuredStackTrace: NodeJS.CallSite[]) => any
 /**
  * Performs a deep equality comparison between two objects.
  *
@@ -504,12 +774,7 @@ export function sortedIndexOf<T>(arr: WithReadonly<T[]>, value: T, comparator: (
  *  @param outputArr - the merged array. By passing it as a parameter, you can save extra time.
  *  @returns the merged array.
  */
-export function sortedMergeArr<T, U = T>(
-  arr1: T[],
-  arr2: U[],
-  comparator?: (a: T, b: U) => number,
-  outputArr?: (T | U)[]
-): (T | U)[]
+export function sortedMergeArr<T, U = T>(arr1: T[], arr2: U[], comparator?: (a: T, b: U) => number, outputArr?: (T | U)[]): (T | U)[]
 /**
  *  Converts an array of Promises into an AsyncIterable.
  *
@@ -537,34 +802,32 @@ export function noop(...args: unknown[]): void
 /**
  *  A type that represents a safe asynchronous function wrapper.
  */
-export type AsyncSafeFunction<T extends (...args: any[]) => Promise<any>> =
-    ((...args: Parameters<T>) => undefined | ReturnType<T>) & T;
+export type AsyncSafeFunction<T extends (...args: any[]) => Promise<any>> = ((...args: Parameters<T>) => undefined | ReturnType<T>) & T
 
 /**
  *  A type that represents a safe synchronous function wrapper.
  */
-export type SafeFunction<T extends (...args: any[]) => any> =
-    ((...args: Parameters<T>) => undefined | ReturnType<T>) & T;
+export type SafeFunction<T extends (...args: any[]) => any> = ((...args: Parameters<T>) => undefined | ReturnType<T>) & T
 
 /**
  *  A type that represents a function that can only be successfully executed once.
  *  Subsequent calls reuse the result of the first successful execution.
  */
 export type OnceFunction<T extends (...args: any[]) => any> = {
-    (...args: Parameters<T>): ReturnType<T>;
-    called?: boolean;
-    value?: ReturnType<T>;
-} & T;
+  (...args: Parameters<T>): ReturnType<T>
+  called?: boolean
+  value?: ReturnType<T>
+} & T
 
 /**
  *  A type that represents an asynchronous function that can only be successfully executed once.
  *  Subsequent calls reuse the result of the first successful execution.
  */
 export type AsyncOnceFunction<T extends (...args: any[]) => any> = {
-    (...args: Parameters<T>): Promise<ReturnType<T>>;
-    called?: boolean;
-    value?: ReturnType<T>;
-} & T;
+  (...args: Parameters<T>): Promise<ReturnType<T>>
+  called?: boolean
+  value?: ReturnType<T>
+} & T
 /**
  *  Creates a function that executes only once and caches its result.
  *
