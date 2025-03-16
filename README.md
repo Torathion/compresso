@@ -21,6 +21,8 @@ Compresso is a quick, zero-dependency utility library with micro-optimized utili
     pnpm i compresso
 ```
 
+And then only import what you need as `compresso` is tree-shakable!
+
 ## Motivation
 
 Bundler can not optimize and minify everything. While the concept of [name-mangling](https://en.wikipedia.org/wiki/Name_mangling) exists, it's not very well used in [`esbuild`](https://esbuild.github.io/)-based bundlers like [`vite`](https://vite.dev/) when it comes to object properties. Built-Ins like `Number`, `Math`, `Object`, `Array` and more can't be minified at all. But with compresso, it can quickly turn code like `Object.getOwnPropertyDescriptors` that can't be minified into `getPropDescriptor` that be minified to just `g()`.
