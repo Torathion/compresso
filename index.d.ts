@@ -1,4 +1,15 @@
-import { AnyArray, AnyObject, AnyFunction, AnyNumberArray, AsyncFunction, ClassConstructor, HasToString, MaybeArray, Table, WithReadonly } from 'typestar'
+import {
+  AnyArray,
+  AnyObject,
+  AnyFunction,
+  AnyNumberArray,
+  AsyncFunction,
+  ClassConstructor,
+  HasToString,
+  MaybeArray,
+  Table,
+  WithReadonly
+} from 'typestar'
 
 declare module 'compresso' {
   /**
