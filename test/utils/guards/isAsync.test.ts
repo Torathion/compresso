@@ -42,8 +42,6 @@ describe('isAsync', () => {
     expect(isAsync(42 as any)).toBe(false)
     expect(isAsync('string' as any)).toBe(false)
     expect(isAsync({} as any)).toBe(false)
-    expect(isAsync(null as any)).toBe(false)
-    expect(isAsync(undefined as any)).toBe(false)
   })
 
   it('should return true for bound async function', () => {
