@@ -1,6 +1,6 @@
 import toObjString from '../obj/toObjString'
 
-const errorTags = new Set(['[object Error]', '[object DOMException]', '[object DOMError]', '[object Exception]'])
+const errorTags = new Set(['[object DOMError]', '[object DOMException]', '[object Error]', '[object Exception]'])
 
 /**
  * Checks if a value is an `Error`.

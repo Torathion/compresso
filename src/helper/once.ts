@@ -1,6 +1,6 @@
-import { refMergeObj } from 'src/constants'
 import type { OnceFunction } from 'src/types'
 import type { AnyFunction } from 'typestar'
+import { refMergeObj } from 'src/constants'
 
 /**
  *  Creates a function that executes only once and caches its result.

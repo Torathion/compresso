@@ -17,7 +17,7 @@ export default function sortedIndexOf<T>(
   min = 0,
   max = arr.length - 1
 ): number {
-  let currIndex: number, compareResult: number, x: T
+  let compareResult: number, currIndex: number, x: T
   while (min <= max) {
     currIndex = (min + max) >>> 1
     x = arr[currIndex]

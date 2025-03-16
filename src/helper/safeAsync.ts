@@ -1,6 +1,6 @@
-import { refMergeObj } from 'src/constants'
 import type { AsyncSafeFunction } from 'src/types'
 import type { AsyncFunction } from 'typestar'
+import { refMergeObj } from 'src/constants'
 
 /**
  * Wraps an async function to safely handle errors by returning a Promise that

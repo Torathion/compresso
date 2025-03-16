@@ -1,6 +1,6 @@
-import { refMergeObj } from 'src/constants'
 import type { AsyncOnceFunction } from 'src/types'
 import type { AnyFunction } from 'typestar'
+import { refMergeObj } from 'src/constants'
 
 /**
  * Creates an async function that executes only once and caches its result.

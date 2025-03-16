@@ -1,6 +1,6 @@
-import { refMergeObj } from 'src/constants'
 import type { SafeFunction } from 'src/types'
 import type { AnyFunction } from 'typestar'
+import { refMergeObj } from 'src/constants'
 
 /**
  *  Wraps a function to make it "safe" by catching any errors and returning silently without issues.

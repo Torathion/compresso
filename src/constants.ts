@@ -1,16 +1,6 @@
 export const { parse: parseJson, stringify } = JSON
-export const { freeze, isExtensible, isFrozen, isSealed, seal, preventExtensions } = Object
+export const { freeze, isExtensible, isFrozen, isSealed, preventExtensions, seal } = Object
 export const {
-  E,
-  LN10,
-  LN2,
-  LOG10E,
-  LOG2E,
-  PI,
-  SQRT1_2,
-  SQRT2,
-  max,
-  min,
   abs,
   acos,
   acosh,
@@ -24,26 +14,36 @@ export const {
   clz32,
   cos,
   cosh,
+  E,
   exp,
   expm1,
   floor,
   fround,
   imul,
+  LN2,
+  LN10,
   log,
-  log10,
   log1p,
   log2,
+  LOG2E,
+  log10,
+  LOG10E,
+  max,
+  min,
+  PI,
   pow,
   random,
   sign,
   sin,
   sinh,
   sqrt,
+  SQRT1_2,
+  SQRT2,
   tan,
   tanh,
   trunc
 } = Math
-export const { EPSILON, MAX_SAFE_INTEGER, isInteger, isSafeInteger } = Number
+export const { EPSILON, isInteger, isSafeInteger, MAX_SAFE_INTEGER } = Number
 export const MAX_NUM = Number.MAX_VALUE
 export const MIN_NUM = Number.MIN_VALUE
 export const refMergeObj = Object.assign
