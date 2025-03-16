@@ -36,8 +36,8 @@ describe('arrRangesIndexOf', () => {
 
   it('should handle multiple ranges correctly', () => {
     const arr = [1, 3, 5, 7, 9, 11, 13, 15]
-    expect(arrRangesIndexOf(arr, 2)).toBe(0)  // in [1,3]
-    expect(arrRangesIndexOf(arr, 6)).toBe(1)  // in [5,7]
+    expect(arrRangesIndexOf(arr, 2)).toBe(0) // in [1,3]
+    expect(arrRangesIndexOf(arr, 6)).toBe(1) // in [5,7]
     expect(arrRangesIndexOf(arr, 10)).toBe(2) // in [9,11]
     expect(arrRangesIndexOf(arr, 14)).toBe(3) // in [13,15]
   })

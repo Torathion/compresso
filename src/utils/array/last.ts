@@ -8,6 +8,6 @@ import type { WithReadonly } from 'typestar'
  * @returns either the last element or the fallback element, if the array is empty.
  */
 export default function last<T>(arr: WithReadonly<T[]>, fallback?: T): T | undefined {
-    const len = arr.length
-    return len > 0 ? arr.at(-1) : fallback
+  const len = arr.length
+  return len > 0 ? arr.at(-1) : fallback
 }

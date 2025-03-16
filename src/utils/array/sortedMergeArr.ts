@@ -1,9 +1,11 @@
 /**
- *	Merges two sorted arrays. It's a binary merge algorithm that is faster than `mergeArr` of `compactor`.  Both arrays have to be sorted for it to work.
+ *	Merges two sorted arrays. It's a binary merge algorithm that is faster than `mergeArr` of `compactor`.
+ *  Both arrays have to be sorted for it to work.
  *
  *  @param arr1 - array to merge
  *  @param arr2 - array to merge, can be of different type, but has to be handled in the comparator
- *  @param comparator - function to compare the both array values with. Works in the way of: negative number or 0 = first array, positive number = second array
+ *  @param comparator - function to compare the both array values with.
+ *                      Works in the way of: negative number or 0 = first array, positive number = second array
  *  @param outputArr - the merged array. By passing it as a parameter, you can save extra time.
  *  @returns the merged array.
  */

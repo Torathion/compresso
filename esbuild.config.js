@@ -1,15 +1,14 @@
 import { build } from 'esbuild'
 
 const buildOptions = {
-  entryPoints: ['./test.ts'],
+  entryPoints: ['./src/index.ts'],
   bundle: true,
   minify: true,
   platform: 'node',
   sourcemap: false,
   target: 'es2022',
   logLevel: 'info',
-  packages: 'external',
-  allowOverwrite: true
+  packages: 'external'
 }
 
 // Build ESM version

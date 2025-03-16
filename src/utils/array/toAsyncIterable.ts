@@ -6,7 +6,7 @@
  */
 export default function toAsyncIterable<T>(arr: Promise<T>[]): AsyncIterable<T> {
   return {
-    async *[Symbol.asyncIterator](): AsyncGenerator<T> {
+    async* [Symbol.asyncIterator](): AsyncGenerator<T> {
       const len = arr.length
       for (let i = 0; i < len; i++) {
         yield await arr[i]

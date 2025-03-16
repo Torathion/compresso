@@ -1,8 +1,8 @@
-import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
 import type { AnyObject } from 'typestar'
-import isObj from '../guards/isObj'
-import isArray from '../guards/isArray'
+import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
 import deepArrEquals from '../array/deepArrEquals'
+import isArray from '../guards/isArray'
+import isObj from '../guards/isObj'
 
 /**
  * Performs a deep equality comparison between two objects.

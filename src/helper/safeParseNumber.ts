@@ -5,5 +5,5 @@
  * @returns The parsed number, or 0 if the value cannot be converted
  */
 export default function safeParseNumber(value: unknown): number {
-    return value && !isNaN(+value) ? +value : 0;
+  return value && !isNaN(+value) ? +value : 0
 }

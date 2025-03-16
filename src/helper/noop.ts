@@ -5,5 +5,5 @@
  *  This function intentionally does nothing and has no side effects.
  */
 export default function noop(..._args: unknown[]): void {
-    return undefined;
+  return undefined
 }

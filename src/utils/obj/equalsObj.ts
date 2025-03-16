@@ -1,5 +1,5 @@
-import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
 import type { AnyObject } from 'typestar'
+import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
 
 /**
  *  Compares two objects for shallow equality by checking if they have the same keys and values.

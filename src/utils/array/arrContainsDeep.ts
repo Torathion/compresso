@@ -22,8 +22,7 @@ export default function arrContainsDeep<T>(source: MaybeArray<T>[], target: Mayb
       (isElementArray && isTargetArray && (deepArrEquals(element, target) || arrContainsDeep(element, target))) ||
       (isElementArray && arrContainsDeep(element, target)) ||
       (!isTargetArray && element === target)
-    )
-      return true
+    ) return true
   }
   return false
 }
