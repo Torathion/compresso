@@ -1,7 +1,4 @@
-import { AnyArray, AnyFunction, AnyNumberArray, AsyncFunction, ClassConstructor, HasToString, WithReadonly } from 'typestar'
-// JSON methods
-
-import { AnyObject, MaybeArray, Table } from 'typestar'
+import { AnyArray, AnyObject, AnyFunction, AnyNumberArray, AsyncFunction, ClassConstructor, HasToString, MaybeArray, Table, WithReadonly } from 'typestar'
 
 declare module 'compresso' {
   /**

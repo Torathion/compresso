@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      typestar:
+        specifier: ^1.8.0
+        version: 1.8.0
     devDependencies:
       '@vitest/coverage-v8':
         specifier: ^3.0.8
@@ -23,9 +27,6 @@ importers:
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
-      typestar:
-        specifier: ^1.8.0
-        version: 1.8.0
       vitest:
         specifier: ^3.0.8
         version: 3.0.8(@types/node@22.13.5)(jiti@2.4.2)(stylus@0.57.0)

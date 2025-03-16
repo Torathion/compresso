@@ -42,7 +42,9 @@
     "eslint": "^9.22.0",
     "eslint-config-shiny": "^4.1.0",
     "typescript": "^5.8.2",
-    "typestar": "^1.8.0",
     "vitest": "^3.0.8"
+  },
+  "dependencies": {
+    "typestar": "^1.8.0"
   }
 }
