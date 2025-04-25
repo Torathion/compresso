@@ -405,6 +405,15 @@ declare module 'compresso' {
    */
   export function deepEqualsObj(o1: AnyObject, o2: AnyObject): boolean
   /**
+  *  Deeply merges multiple objects into a new one.
+  *  Nested objects are recursively merged, while non-object values overwrite existing keys.
+  *  Non-object sources are skipped.
+  *
+  *  @param sources - The source objects to merge.
+  *  @returns A new object containing the merged properties.
+  */
+  export function deepMergeObj<T extends Table<unknown>[]>(...sources: T): DeepMergeResult<T>
+  /**
    *  Deletes a specified property from an object.
    *
    *  @param o - The object from which to delete the property (can be partial)
@@ -419,6 +428,14 @@ declare module 'compresso' {
    *  @returns `true`, if objects have same keys and values, otherwise `false`.
    */
   export function equalsObj(o1: AnyObject, o2: AnyObject): boolean
+  /**
+  *  Merges two or more objects into one, overwriting duplicating keys depending on the order of the passed arguments (left to right).
+  *  This function creates a new object instance on merge.
+  *
+  *  @param sources - all target objects to merge.
+  *  @returns the merged object.
+  */
+  export default function merge<T extends Table<unknown>[]>(...sources: T): ShallowMergeResult<T>
   /**
    *  Converts a value to its object string representation.
    *
