@@ -1,3 +1,4 @@
+import { keysOf } from 'src/constants'
 import type { AnyObject } from 'typestar'
 
 /**
@@ -8,8 +9,8 @@ import type { AnyObject } from 'typestar'
  * @returns either `undefined`, if the comparison should terminate with `false`, otherwise the `Set` of keys.
  */
 export default function getKeysForEqualsObj(o1: AnyObject, o2: AnyObject): Set<string> | undefined {
-  const o1Keys = Object.keys(o1)
-  const o2Keys = Object.keys(o2)
+  const o1Keys = keysOf(o1)
+  const o2Keys = keysOf(o2)
   if (o1Keys.length !== o2Keys.length) return
   const keys = new Set(o1Keys.concat(o2Keys))
   if (keys.size > o1Keys.length) return

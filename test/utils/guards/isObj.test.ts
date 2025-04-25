@@ -7,9 +7,9 @@ describe('isObj', () => {
     expect(isObj({ a: 1 })).toBe(true)
   })
 
-  it('should return true for arrays', () => {
-    expect(isObj([])).toBe(true)
-    expect(isObj([1, 2, 3])).toBe(true)
+  it('should return false for arrays', () => {
+    expect(isObj([])).toBe(false)
+    expect(isObj([1, 2, 3])).toBe(false)
   })
 
   it('should return false for null', () => {

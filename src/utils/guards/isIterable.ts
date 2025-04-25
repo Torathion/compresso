@@ -1,3 +1,4 @@
+import isArray from './isArray'
 import isFunction from './isFunction'
 import isObj from './isObj'
 
@@ -8,5 +9,5 @@ import isObj from './isObj'
  *  @returns `true` if the value is iterable, otherwise `false`.
  */
 export default function isIterable(value: any): value is Iterable<unknown> {
-  return !!value && isObj(value) && isFunction((value as any)[Symbol.iterator])
+  return !!value && (isArray(value) || isObj(value)) && isFunction((value as any)[Symbol.iterator])
 }

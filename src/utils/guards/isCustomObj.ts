@@ -1,3 +1,4 @@
+import isArray from './isArray'
 import isObj from './isObj'
 
 /**
@@ -7,5 +8,5 @@ import isObj from './isObj'
  *  @returns `true` if the value is a custom object, otherwise `false`.
  */
 export default function isCustomObj(value: unknown): boolean {
-  return isObj(value) && !(value instanceof RegExp) && !(value instanceof Error) && !(value instanceof Date) && !(value instanceof Blob)
+  return (isArray(value) || isObj(value)) && !(value instanceof RegExp) && !(value instanceof Error) && !(value instanceof Date) && !(value instanceof Blob)
 }
