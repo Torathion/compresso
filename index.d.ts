@@ -35,37 +35,37 @@ declare module 'compresso' {
   ) => string
   /**
    * Freezes an object, preventing new properties from being added and existing properties from being modified or deleted.
-   * @param obj The object to freeze.
+   * @param obj - the target
    * @returns The frozen object.
    */
   export const freeze: <T>(obj: T) => Readonly<T>
   /**
    * Determines if an object is extensible (whether it can have new properties added to it).
-   * @param obj The object to test.
+   * @param obj - the target
    * @returns Whether the object is extensible.
    */
   export const isExtensible: (obj: any) => boolean
   /**
    * Determines if an object is frozen (cannot be modified).
-   * @param obj The object to test.
+   * @param obj - the target
    * @returns Whether the object is frozen.
    */
   export const isFrozen: (obj: any) => boolean
   /**
    * Determines if an object is sealed (cannot add/remove properties but can modify existing ones).
-   * @param obj The object to test.
+   * @param obj - the target
    * @returns Whether the object is sealed.
    */
   export const isSealed: (obj: any) => boolean
   /**
    * Seals an object, preventing new properties from being added and marking all existing properties as non-configurable.
-   * @param obj The object to seal.
+   * @param obj - the target
    * @returns The sealed object.
    */
   export const seal: <T>(obj: T) => T
   /**
    * Prevents new properties from being added to an object but allows modification of existing properties.
-   * @param obj The object to restrict.
+   * @param obj - the target
    * @returns The object with extensions prevented.
    */
   export const preventExtensions: <T>(obj: T) => T
@@ -315,7 +315,7 @@ declare module 'compresso' {
   export const refMergeObj: <T, U>(target: T, ...sources: U[]) => T & U
   /**
    * Defines a new property directly on an object or modifies an existing property.
-   * @param obj The object on which to define the property.
+   * @param obj - the target object
    * @param prop The name or symbol of the property to define.
    * @param descriptor The descriptor for the property being defined or modified.
    * @returns The object with the defined property.
@@ -323,33 +323,45 @@ declare module 'compresso' {
   export const defineProp: (obj: any, prop: PropertyKey, descriptor: PropertyDescriptor) => any
   /**
    * Returns the prototype of the specified object.
-   * @param obj The object whose prototype is to be returned.
+   * @param obj - the target object
    * @returns The prototype of the object, or null if there is no inherited prototype.
    */
   export const getProto: (obj: any) => any
   /**
    * Returns the property descriptor for an own property of the specified object.
-   * @param obj The object whose property descriptor is to be returned.
+   * @param obj - the target objectT
    * @param prop The name or symbol of the property.
    * @returns The property descriptor, or undefined if the property does not exist.
    */
   export const getPropDescriptor: (obj: any, prop: PropertyKey) => PropertyDescriptor | undefined
   /**
    * Sets the prototype of a specified object to another object or null.
-   * @param obj The object whose prototype is to be set.
+   * @param obj - the target object
    * @param proto The new prototype, or null.
    * @returns The object with the updated prototype.
    */
   export const setProto: (obj: any, proto: object | null) => any
   /**
    * Returns an array of a given object's own enumerable property [key, value] pairs.
-   * @param obj The object whose enumerable own property entries are to be returned.
+   * @param obj - the target object
    * @returns An array of the object's own enumerable property entries.
    */
   export const entriesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => [string, T][]
   /**
+   * Returns an array of a given object's own enumerable property names.
+   * @param obj - the target object
+   * @returns An array of all property names of the object.
+   */
+  export const keysOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => string[];
+  /**
+   * Returns an array of a given object's own enumerable property values.
+   * @param obj - the target object
+   * @returns An array containing the given object's own enumerable property values.
+   */
+  export const valuesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => T[];
+  /**
    * Determines whether an object has a property with the specified name as its own property.
-   * @param obj The object to check.
+   * @param obj - the target object
    * @param prop The property name or symbol to test.
    * @returns Whether the object has the specified property as its own property.
    */
@@ -767,6 +779,76 @@ declare module 'compresso' {
     called?: boolean
     value?: ReturnType<T>
   } & T
+  /**
+  *  Computes the result type of deep merging multiple plain objects.
+  *  Handles single objects, multiple objects, or empty inputs by recursively applying MergeObjects.
+  *
+  *  @template T - An array of plain object types.
+  */
+  export type DeepMergeResult<T extends Table<unknown>[]> = T extends [infer First, ...infer Rest]
+    ? Rest extends Table<unknown>[]
+      ? First extends Table<unknown>
+        ? Rest extends [infer _, ...infer Rest2]
+          ? Rest2 extends Table<unknown>[]
+            ? MergeObjects<First, DeepMergeResult<Rest>>
+            : First
+          : First
+        : unknown
+      : unknown
+    : unknown
+
+  /**
+  *  Merges two plain object types, recursively combining nested objects.
+  *  For overlapping keys, nested objects are merged, while non-object values are in a union.
+  *  Non-overlapping keys are preserved from either T or U.
+  *
+  *  @template T - The first object type.
+  *  @template U - The second object type.
+  */
+  export type MergeObjects<T, U> = {
+    [K in keyof (T & U)]: K extends keyof T & keyof U
+      ? T[K] extends Table<T>
+        ? U[K] extends Table<unknown>
+          ? MergeObjects<T[K], U[K]>
+          : T[K] | U[K]
+        : T[K] | U[K]
+      : K extends keyof T
+        ? T[K]
+        : K extends keyof U
+          ? U[K]
+          : never
+  }
+
+  /**
+  *  Merges two plain object types for a shallow merge.
+  *  Overlapping keys take the type of the second object (U).
+  *  Non-overlapping keys are preserved from T or U.
+  *
+  *  @template T - The first object type.
+  *  @template U - The second object type.
+  */
+  type ShallowMergeObjects<T, U> = {
+    [K in keyof (T & U)]: K extends keyof U ? U[K] : K extends keyof T ? T[K] : never
+  }
+
+  /**
+  *  Computes the return type of shallow merging multiple plain objects.
+  *  Later objects overwrite earlier ones for overlapping keys.
+  *  Handles single, multiple, or empty inputs.
+  *
+  *  @template T - An array of plain object types.
+  */
+  export type ShallowMergeResult<T extends Table<unknown>[]> = T extends [infer First, ...infer Rest]
+    ? Rest extends Table<unknown>[]
+      ? First extends Table<unknown>
+        ? Rest extends [infer _, ...infer Rest2]
+          ? Rest2 extends Table<unknown>[]
+            ? ShallowMergeObjects<First, ShallowMergeResult<Rest>>
+            : First
+          : First
+        : unknown
+      : unknown
+    : unknown
   /**
    *  Creates a function that executes only once and caches its result.
    *
