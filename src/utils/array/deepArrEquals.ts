@@ -1,6 +1,6 @@
 import type { AnyArray, MaybeArray } from 'typestar'
-import isArray from '../guards/isArray'
 import { isObj } from '../guards'
+import isArray from '../guards/isArray'
 import { deepEqualsObj } from '../obj'
 
 /**
@@ -18,9 +18,9 @@ export default function deepArrEquals(arr1: MaybeArray<AnyArray<unknown>>, arr2:
     v1 = arr1[i]
     v2 = arr2[i]
     // Checks need to be separated like this for all tests to pass
-    if (isArray(v1) && isArray(v2)) return deepArrEquals(v1, v2);
-    else if (isObj(v1) && isObj(v2)) return deepEqualsObj(v1, v2);
-    else if (v1 !== v2) return false;
+    if (isArray(v1) && isArray(v2)) return deepArrEquals(v1, v2)
+    else if (isObj(v1) && isObj(v2)) return deepEqualsObj(v1, v2)
+    else if (v1 !== v2) return false
   }
   return true
 }

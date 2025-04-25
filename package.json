@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "node esbuild.config.js",
-    "lint": "eslint src --fix",
+    "lint": "eslint --fix",
     "test": "vitest"
   },
   "keywords": [

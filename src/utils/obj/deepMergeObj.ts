@@ -1,7 +1,7 @@
-import type { DeepMergeResult } from "src/types"
-import type { Table } from "typestar"
-import { isObj } from "../guards"
-import { keysOf, refMergeObj } from "src/constants"
+import type { DeepMergeResult } from 'src/types'
+import type { Table } from 'typestar'
+import { keysOf, refMergeObj } from 'src/constants'
+import { isObj } from '../guards'
 
 /**
  *  Deeply merges multiple objects into a new one.

@@ -1,6 +1,6 @@
-import { refMergeObj } from "src/constants";
-import type { ShallowMergeResult } from "src/types";
-import type { Table } from "typestar";
+import type { ShallowMergeResult } from 'src/types'
+import type { Table } from 'typestar'
+import { refMergeObj } from 'src/constants'
 
 /**
  *  Merges two or more objects into one, overwriting duplicating keys depending on the order of the passed arguments (left to right).

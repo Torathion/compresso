@@ -1,5 +1,5 @@
-import { keysOf } from 'src/constants'
 import type { AnyObject } from 'typestar'
+import { keysOf } from 'src/constants'
 
 /**
  *  Function to handle keys for `equalsObj` and `deepEqualsObj`.

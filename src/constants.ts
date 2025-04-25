@@ -47,17 +47,17 @@ export const { EPSILON, isInteger, isSafeInteger, MAX_SAFE_INTEGER, MAX_VALUE: M
 export const {
   assign: refMergeObj,
   defineProperty: defineProp,
-  getPrototypeOf: getProto,
-  getOwnPropertyDescriptor: getPropDescriptor,
-  setPrototypeOf: setProto,
   entries: entriesOf,
+  getOwnPropertyDescriptor: getPropDescriptor,
+  getPrototypeOf: getProto,
+  hasOwn: hasProp,
   keys: keysOf,
-  values: valuesOf,
-  hasOwn: hasProp
+  setPrototypeOf: setProto,
+  values: valuesOf
 } = Object
 
 // String
 export const { fromCharCode, fromCodePoint } = String
 
 // Error
-export const { prepareStackTrace, captureStackTrace: createStackTrace } = Error
+export const { captureStackTrace: createStackTrace, prepareStackTrace } = Error

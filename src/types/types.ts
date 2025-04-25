@@ -7,14 +7,6 @@ export type AsyncOnceFunction<T extends AnyFunction> = {
 } & T
 export type AsyncSafeFunction<T extends AsyncFunction> = ((...args: Parameters<T>) => undefined | ReturnType<T>) & T
 
-export type OnceFunction<T extends AnyFunction> = {
-  (...args: Parameters<T>): ReturnType<T>
-  called?: boolean
-  value?: ReturnType<T>
-} & T
-
-export type SafeFunction<T extends AnyFunction> = ((...args: Parameters<T>) => undefined | ReturnType<T>) & T
-
 /**
  *  Computes the result type of deep merging multiple plain objects.
  *  Handles single objects, multiple objects, or empty inputs by recursively applying MergeObjects.
@@ -55,17 +47,13 @@ export type MergeObjects<T, U> = {
         : never
 }
 
-/**
- *  Merges two plain object types for a shallow merge.
- *  Overlapping keys take the type of the second object (U).
- *  Non-overlapping keys are preserved from T or U.
- *
- *  @template T - The first object type.
- *  @template U - The second object type.
- */
-type ShallowMergeObjects<T, U> = {
-  [K in keyof (T & U)]: K extends keyof U ? U[K] : K extends keyof T ? T[K] : never
-}
+export type OnceFunction<T extends AnyFunction> = {
+  (...args: Parameters<T>): ReturnType<T>
+  called?: boolean
+  value?: ReturnType<T>
+} & T
+
+export type SafeFunction<T extends AnyFunction> = ((...args: Parameters<T>) => undefined | ReturnType<T>) & T
 
 /**
  *  Computes the return type of shallow merging multiple plain objects.
@@ -85,3 +73,15 @@ export type ShallowMergeResult<T extends Table<unknown>[]> = T extends [infer Fi
       : unknown
     : unknown
   : unknown
+
+/**
+ *  Merges two plain object types for a shallow merge.
+ *  Overlapping keys take the type of the second object (U).
+ *  Non-overlapping keys are preserved from T or U.
+ *
+ *  @template T - The first object type.
+ *  @template U - The second object type.
+ */
+type ShallowMergeObjects<T, U> = {
+  [K in keyof (T & U)]: K extends keyof U ? U[K] : K extends keyof T ? T[K] : never
+}
