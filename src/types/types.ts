@@ -25,28 +25,6 @@ export type DeepMergeResult<T extends Table<unknown>[]> = T extends [infer First
     : unknown
   : unknown
 
-/**
- *  Merges two plain object types, recursively combining nested objects.
- *  For overlapping keys, nested objects are merged, while non-object values are in a union.
- *  Non-overlapping keys are preserved from either T or U.
- *
- *  @template T - The first object type.
- *  @template U - The second object type.
- */
-type MergeObjects<T, U> = {
-  [K in keyof (T & U)]: K extends keyof T & keyof U
-    ? T[K] extends Table<T>
-      ? U[K] extends Table<unknown>
-        ? MergeObjects<T[K], U[K]>
-        : T[K] | U[K]
-      : T[K] | U[K]
-    : K extends keyof T
-      ? T[K]
-      : K extends keyof U
-        ? U[K]
-        : never
-}
-
 export type OnceFunction<T extends AnyFunction> = {
   (...args: Parameters<T>): ReturnType<T>
   called?: boolean
@@ -73,6 +51,28 @@ export type ShallowMergeResult<T extends Table<unknown>[]> = T extends [infer Fi
       : unknown
     : unknown
   : unknown
+
+/**
+ *  Merges two plain object types, recursively combining nested objects.
+ *  For overlapping keys, nested objects are merged, while non-object values are in a union.
+ *  Non-overlapping keys are preserved from either T or U.
+ *
+ *  @template T - The first object type.
+ *  @template U - The second object type.
+ */
+type MergeObjects<T, U> = {
+  [K in keyof (T & U)]: K extends keyof T & keyof U
+    ? T[K] extends Table<T>
+      ? U[K] extends Table<unknown>
+        ? MergeObjects<T[K], U[K]>
+        : T[K] | U[K]
+      : T[K] | U[K]
+    : K extends keyof T
+      ? T[K]
+      : K extends keyof U
+        ? U[K]
+        : never
+}
 
 /**
  *  Merges two plain object types for a shallow merge.

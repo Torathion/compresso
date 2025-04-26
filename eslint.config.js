@@ -5,7 +5,8 @@ export default [
     {
         rules: {
             'no-empty': 0,
-            'ts/no-unnecessary-condition': 0
+            'ts/no-unnecessary-condition': 0,
+            'unicorn/prefer-structured-clone': 0
         }
     }
 ]
