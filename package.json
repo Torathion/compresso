@@ -14,7 +14,6 @@
   },
   "scripts": {
     "build": "node esbuild.config.js",
-    "build:size": "pnpm i --dangerously-allow-all-builds && pnpm build",
     "lint": "eslint --fix",
     "test": "vitest"
   },
