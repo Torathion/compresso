@@ -14,6 +14,7 @@
   },
   "scripts": {
     "build": "node esbuild.config.js",
+    "build:size": "pnpm i --dangerously-allow-all-builds && pnpm build",
     "lint": "eslint --fix",
     "test": "vitest"
   },
@@ -43,6 +44,7 @@
     "esbuild": "^0.25.3",
     "eslint": "^9.25.1",
     "eslint-config-shiny": "^4.1.0",
+    "size-limit": "^11.2.0",
     "typescript": "^5.8.3",
     "vitest": "^3.1.2"
   },
@@ -53,9 +55,9 @@
     "neverBuiltDependencies": []
   },
   "size-limit": [
-  {
-    "path": "dist/index.js",
-    "limit": "4500 ms"
-  }
-]
+    {
+      "path": "dist/index.js",
+      "limit": "4500 ms"
+    }
+  ]
 }
