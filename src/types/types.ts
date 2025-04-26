@@ -33,7 +33,7 @@ export type DeepMergeResult<T extends Table<unknown>[]> = T extends [infer First
  *  @template T - The first object type.
  *  @template U - The second object type.
  */
-export type MergeObjects<T, U> = {
+type MergeObjects<T, U> = {
   [K in keyof (T & U)]: K extends keyof T & keyof U
     ? T[K] extends Table<T>
       ? U[K] extends Table<unknown>
