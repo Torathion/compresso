@@ -57,6 +57,10 @@
     {
       "path": "dist/index.js",
       "limit": "4500 ms"
+    },
+    {
+      "path": "dist/index.mjs",
+      "limit": "4500ms"
     }
   ]
 }
