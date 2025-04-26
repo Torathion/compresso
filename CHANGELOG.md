@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.2.1] 04-26-2025
+
+- Fixed type declaration of `mergeObj`. Before it was the default import of this package and was named `merge`.
+
 ## [1.2.0] 04-26-2025
 
 ### Added

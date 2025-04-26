@@ -435,7 +435,7 @@ declare module 'compresso' {
   *  @param sources - all target objects to merge.
   *  @returns the merged object.
   */
-  export default function merge<T extends Table<unknown>[]>(...sources: T): ShallowMergeResult<T>
+  export function mergeObj<T extends Table<unknown>[]>(...sources: T): ShallowMergeResult<T>
   /**
    *  Converts a value to its object string representation.
    *
