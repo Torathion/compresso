@@ -49,6 +49,9 @@
   "dependencies": {
     "typestar": "^1.9.1"
   },
+  "pnpm": {
+    "neverBuiltDependencies": []
+  },
   "size-limit": [
   {
     "path": "dist/index.js",
