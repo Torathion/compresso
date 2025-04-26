@@ -1,5 +1,7 @@
 import type { AnyArray, MaybeArray } from 'typestar'
+import { isObj } from '../guards'
 import isArray from '../guards/isArray'
+import { deepEqualsObj } from '../obj'
 
 /**
  *  Compares two arrays with each others and takes nested arrays into consideration.
@@ -11,14 +13,14 @@ import isArray from '../guards/isArray'
 export default function deepArrEquals(arr1: MaybeArray<AnyArray<unknown>>, arr2: unknown[]): boolean {
   const len = arr1.length
   if (len !== arr2.length) return false
-  let el, el2
+  let v1, v2
   for (let i = len - 1; i >= 0; i--) {
-    el = arr1[i]
-    el2 = arr2[i]
+    v1 = arr1[i]
+    v2 = arr2[i]
     // Checks need to be separated like this for all tests to pass
-    if (isArray(el) && isArray(el2)) {
-      if (!deepArrEquals(el, el2)) return false
-    } else if (el !== el2) return false
+    if (isArray(v1) && isArray(v2)) return deepArrEquals(v1, v2)
+    else if (isObj(v1) && isObj(v2)) return deepEqualsObj(v1, v2)
+    else if (v1 !== v2) return false
   }
   return true
 }

@@ -43,20 +43,21 @@ export const {
   tanh,
   trunc
 } = Math
-export const { EPSILON, isInteger, isSafeInteger, MAX_SAFE_INTEGER } = Number
-export const MAX_NUM = Number.MAX_VALUE
-export const MIN_NUM = Number.MIN_VALUE
-export const refMergeObj = Object.assign
-export const defineProp = Object.defineProperty
-export const getProto = Object.getPrototypeOf
-export const getPropDescriptor = Object.getOwnPropertyDescriptor
-export const setProto = Object.setPrototypeOf
-export const entriesOf = Object.entries
-export const hasProp = Object.hasOwn
+export const { EPSILON, isInteger, isSafeInteger, MAX_SAFE_INTEGER, MAX_VALUE: MAX_NUM, MIN_VALUE: MIN_NUM } = Number
+export const {
+  assign: refMergeObj,
+  defineProperty: defineProp,
+  entries: entriesOf,
+  getOwnPropertyDescriptor: getPropDescriptor,
+  getPrototypeOf: getProto,
+  hasOwn: hasProp,
+  keys: keysOf,
+  setPrototypeOf: setProto,
+  values: valuesOf
+} = Object
 
 // String
 export const { fromCharCode, fromCodePoint } = String
 
 // Error
-export const createStackTrace = Error.captureStackTrace
-export const { prepareStackTrace } = Error
+export const { captureStackTrace: createStackTrace, prepareStackTrace } = Error

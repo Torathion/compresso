@@ -2,26 +2,17 @@
 
 Thank you for your interest in contributing to compresso! We welcome contributions from everyone, whether you're fixing bugs, improving documentation, or adding new features. This guide will help you get started.
 
----
-
 ## Table of Contents
+
 1. [Code of Conduct](#code-of-conduct)
 2. [Getting Started](#getting-started)
 3. [Setting Up the Project](#setting-up-the-project)
 4. [Making Changes](#making-changes)
-5. [Submitting a Pull Request](#submitting-a-pull-request)
-6. [Reporting Issues](#reporting-issues)
-7. [Style Guidelines](#style-guidelines)
-8. [Code Review Process](#code-review-process)
-9. [License](#license)
-
----
+5. [Style Guidelines](#style-guidelines)
 
 ## Code of Conduct
 
 By participating in this project, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md). Please read it before making any contributions.
-
----
 
 ## Getting Started
 
@@ -42,3 +33,7 @@ By participating in this project, you agree to abide by our [Code of Conduct](CO
 - No comfort functions like `array.forEach`, `array.map`, `array.reduce`
 - Do not add obfuscated or unreadable code into the project
 - Do not add any new dependencies into the project
+
+## Style Guidelines
+
+Please follow the rules enforced in the projects formatter [Prettier](https://prettier.io/) and the projects Linter [ESLint](https://eslint.org/)
