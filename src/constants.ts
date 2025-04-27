@@ -63,4 +63,4 @@ export const { fromCharCode, fromCodePoint } = String
 export const { captureStackTrace: createStackTrace, prepareStackTrace } = Error
 
 // Array
-export const { isArray, from: arrFrom } = Array
+export const { from: arrFrom, isArray } = Array

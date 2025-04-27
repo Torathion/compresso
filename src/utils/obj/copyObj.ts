@@ -1,5 +1,5 @@
-import { refMergeObj } from "src/constants";
-import type { AnyObject } from "typestar";
+import type { AnyObject } from 'typestar'
+import { refMergeObj } from 'src/constants'
 
 /**
  *  Creates a shallow copy of the provided object.

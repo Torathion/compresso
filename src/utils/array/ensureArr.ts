@@ -1,6 +1,6 @@
 import type { MaybeArray } from 'typestar'
-import { isDefined } from '../guards'
 import { isArray } from 'src/constants'
+import { isDefined } from '../guards'
 
 /**
  *  Ensures the given value is always returned as an array.

@@ -1,5 +1,5 @@
-import { arrFrom } from "src/constants";
-import type { AnyArray, Primitive } from "typestar";
+import type { AnyArray, Primitive } from 'typestar'
+import { arrFrom } from 'src/constants'
 
 /**
  *  Creates a new array with unique elements from the input array.
