@@ -16,6 +16,7 @@ export default defineConfig({
       provider: 'v8',
       exclude: [
         '**/*.js',
+        '**/*.[cm]js',
         '**/*.d.ts',
         '**/types/',
         '**/index.ts',

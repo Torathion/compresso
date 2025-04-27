@@ -8,7 +8,8 @@ import {
   HasToString,
   MaybeArray,
   Table,
-  WithReadonly
+  WithReadonly,
+  Primitive
 } from 'typestar'
 
 declare module 'compresso' {
@@ -414,7 +415,7 @@ declare module 'compresso' {
    *  @param obj - The input object to be copied.
    *  @returns A shallow copy of the input object.
    */
-  export default function copyObj<T extends AnyObject>(obj: T): T
+  export function copyObj<T extends AnyObject>(obj: T): T
   /**
    * Performs a deep equality comparison between two objects.
    *
@@ -769,6 +770,23 @@ declare module 'compresso' {
    *  @returns An AsyncIterable that yields resolved values sequentially
    */
   export function toAsyncIterable<T>(arr: Promise<T>[]): AsyncIterable<T>
+  /**
+   *  Creates a new array with unique elements from the input array.
+   *
+   *  @template T - The type of the array elements, constrained to any array type.
+   *  @param arr - The input array from which to remove duplicates.
+   *  @returns A new array containing only unique elements from the input array, in the order of their first appearance.
+   */
+  export function unique<T extends AnyArray<Primitive>>(arr: T): T
+  /**
+   * Merges two arrays and removes duplicates, returning a new array with unique elements.
+   *
+   * @template T - The type of the array elements, constrained to any array type.
+   * @param arr1 - The first input array.
+   * @param arr2 - The second input array (optional). If not provided, only `arr1` is processed.
+   * @returns A new array containing unique elements from both input arrays, in the order of their first appearance.
+   */
+  export function uniqueMerge<T extends unknown[]>(arr1: T, arr2?: T): T
   /**
    *  Creates a bound function that maintains its context from wherever it's called.
    *
