@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [1.3.0] 04-27-2025
+
+### Added
+
+- `copyObj` to shallow copy objects.
+- `unique` and `uniqueMerge` to merge arrays uniquely.
+- `arrFrom` as alias for `Array.from`
+
+### Changed
+
+- Changed implementation of `isArray` to become an alias of `Array.isArray`.
+
 ## [1.2.1] 04-26-2025
 
 - Fixed type declaration of `mergeObj`. Before it was the default import of this package and was named `merge`.
