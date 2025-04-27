@@ -48,7 +48,7 @@
     "vitest": "^3.1.2"
   },
   "dependencies": {
-    "typestar": "^1.9.1"
+    "typestar": "^1.10.1"
   },
   "pnpm": {
     "neverBuiltDependencies": []
