@@ -1,6 +1,6 @@
 import type { AnyArray, MaybeArray } from 'typestar'
+import { isArray } from 'src/constants'
 import { isObj } from '../guards'
-import isArray from '../guards/isArray'
 import { deepEqualsObj } from '../obj'
 
 /**

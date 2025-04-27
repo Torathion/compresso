@@ -1,5 +1,5 @@
 import type { MaybeArray } from 'typestar'
-import { isArray } from '../guards'
+import { isArray } from 'src/constants'
 import deepArrEquals from './deepArrEquals'
 
 /**

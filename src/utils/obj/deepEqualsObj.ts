@@ -1,7 +1,7 @@
 import type { AnyObject } from 'typestar'
+import { isArray } from 'src/constants'
 import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
 import deepArrEquals from '../array/deepArrEquals'
-import isArray from '../guards/isArray'
 import isObj from '../guards/isObj'
 
 /**

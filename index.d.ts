@@ -8,10 +8,25 @@ import {
   HasToString,
   MaybeArray,
   Table,
-  WithReadonly
+  WithReadonly,
+  Primitive
 } from 'typestar'
 
 declare module 'compresso' {
+  /**
+   *  Creates an array from an array-like object.
+   *
+   *  @param arrayLike — An array-like object to convert to an array.
+   *  @returns the converted array.
+   */
+  export function arrFrom<T>(arrayLike: ArrayLike<T>): T[]
+  /**
+   * Determines whether a given value is an array or not.
+   *
+   * @param value - target value.
+   * @returns `true`, if the value is an array, otherwise false.
+   */
+  export function isArray<T>(value: MaybeArray<T>): value is T[]
   /**
    * Parses a JSON string and returns the JavaScript value.
    * @param text A string to parse as JSON.
@@ -393,6 +408,15 @@ declare module 'compresso' {
    */
   export const prepareStackTrace: (error: Error, structuredStackTrace: NodeJS.CallSite[]) => any
   /**
+   *  Creates a shallow copy of the provided object.
+   *  Top-level properties are copied to a new object, but nested objects or arrays retain the same references as in the original.
+   *
+   *  @template T - The type of the input object.
+   *  @param obj - The input object to be copied.
+   *  @returns A shallow copy of the input object.
+   */
+  export function copyObj<T extends AnyObject>(obj: T): T
+  /**
    * Performs a deep equality comparison between two objects.
    *
    * Compares all properties recursively, including nested objects and arrays.
@@ -451,13 +475,6 @@ declare module 'compresso' {
    * @returns `true` if the properties can be safely copied based on their descriptors, otherwise `false`.
    */
   export function canCopyProps(desc1: PropertyDescriptor, desc2: PropertyDescriptor): boolean
-  /**
-   * Determines whether a given value is an array or not.
-   *
-   * @param value - target value.
-   * @returns `true`, if the value is an array, otherwise false.
-   */
-  export function isArray<T>(value: MaybeArray<T>): value is T[]
   /**
    * Checks if a given function is an async function.
    *
@@ -753,6 +770,23 @@ declare module 'compresso' {
    *  @returns An AsyncIterable that yields resolved values sequentially
    */
   export function toAsyncIterable<T>(arr: Promise<T>[]): AsyncIterable<T>
+  /**
+   *  Creates a new array with unique elements from the input array.
+   *
+   *  @template T - The type of the array elements, constrained to any array type.
+   *  @param arr - The input array from which to remove duplicates.
+   *  @returns A new array containing only unique elements from the input array, in the order of their first appearance.
+   */
+  export function unique<T extends AnyArray<Primitive>>(arr: T): T
+  /**
+   * Merges two arrays and removes duplicates, returning a new array with unique elements.
+   *
+   * @template T - The type of the array elements, constrained to any array type.
+   * @param arr1 - The first input array.
+   * @param arr2 - The second input array (optional). If not provided, only `arr1` is processed.
+   * @returns A new array containing unique elements from both input arrays, in the order of their first appearance.
+   */
+  export function uniqueMerge<T extends unknown[]>(arr1: T, arr2?: T): T
   /**
    *  Creates a bound function that maintains its context from wherever it's called.
    *
