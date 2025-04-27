@@ -1,5 +1,5 @@
+import { isArray } from 'src/constants'
 import type { AnyObject } from 'typestar'
-import isArray from './isArray'
 
 /**
  *  Checks if a value is an object (non-null).

@@ -1,6 +1,6 @@
 import type { MaybeArray } from 'typestar'
-import { isArray } from '../guards'
 import deepArrEquals from './deepArrEquals'
+import { isArray } from 'src/constants'
 
 /**
  * Checks recursively if an array contains a value or sub-array deeply equal to the target value.

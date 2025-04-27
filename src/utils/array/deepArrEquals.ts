@@ -1,7 +1,7 @@
 import type { AnyArray, MaybeArray } from 'typestar'
 import { isObj } from '../guards'
-import isArray from '../guards/isArray'
 import { deepEqualsObj } from '../obj'
+import { isArray } from 'src/constants'
 
 /**
  *  Compares two arrays with each others and takes nested arrays into consideration.

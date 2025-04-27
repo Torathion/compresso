@@ -1,5 +1,4 @@
 export { default as canCopyProps } from './canCopyProps'
-export { default as isArray } from './isArray'
 export { default as isAsync } from './isAsync'
 export { default as isAsyncIterable } from './isAsyncIterable'
 export { default as isBigInt } from './isBigInt'

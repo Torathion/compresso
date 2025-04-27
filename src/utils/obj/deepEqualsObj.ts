@@ -1,8 +1,8 @@
 import type { AnyObject } from 'typestar'
 import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
 import deepArrEquals from '../array/deepArrEquals'
-import isArray from '../guards/isArray'
 import isObj from '../guards/isObj'
+import { isArray } from 'src/constants'
 
 /**
  * Performs a deep equality comparison between two objects.

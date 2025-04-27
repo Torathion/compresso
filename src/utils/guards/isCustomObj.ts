@@ -1,4 +1,5 @@
-import isArray from './isArray'
+
+import { isArray } from 'src/constants'
 import isObj from './isObj'
 
 /**

@@ -13,6 +13,20 @@ import {
 
 declare module 'compresso' {
   /**
+   *  Creates an array from an array-like object.
+   *
+   *  @param arrayLike — An array-like object to convert to an array.
+   *  @returns the converted array.
+   */
+  export function arrFrom<T>(arrayLike: ArrayLike<T>): T[]
+  /**
+   * Determines whether a given value is an array or not.
+   *
+   * @param value - target value.
+   * @returns `true`, if the value is an array, otherwise false.
+   */
+  export function isArray<T>(value: MaybeArray<T>): value is T[]
+  /**
    * Parses a JSON string and returns the JavaScript value.
    * @param text A string to parse as JSON.
    * @param reviver A function that transforms the results.
@@ -460,13 +474,6 @@ declare module 'compresso' {
    * @returns `true` if the properties can be safely copied based on their descriptors, otherwise `false`.
    */
   export function canCopyProps(desc1: PropertyDescriptor, desc2: PropertyDescriptor): boolean
-  /**
-   * Determines whether a given value is an array or not.
-   *
-   * @param value - target value.
-   * @returns `true`, if the value is an array, otherwise false.
-   */
-  export function isArray<T>(value: MaybeArray<T>): value is T[]
   /**
    * Checks if a given function is an async function.
    *
