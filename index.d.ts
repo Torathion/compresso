@@ -393,6 +393,15 @@ declare module 'compresso' {
    */
   export const prepareStackTrace: (error: Error, structuredStackTrace: NodeJS.CallSite[]) => any
   /**
+   *  Creates a shallow copy of the provided object.
+   *  Top-level properties are copied to a new object, but nested objects or arrays retain the same references as in the original.
+   *
+   *  @template T - The type of the input object.
+   *  @param obj - The input object to be copied.
+   *  @returns A shallow copy of the input object.
+   */
+  export default function copyObj<T extends AnyObject>(obj: T): T
+  /**
    * Performs a deep equality comparison between two objects.
    *
    * Compares all properties recursively, including nested objects and arrays.

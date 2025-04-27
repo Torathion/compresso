@@ -1,6 +1,7 @@
+export { default as copyObj } from './copyObj'
 export { default as deepEqualsObj } from './deepEqualsObj'
-export * from './deepMergeObj'
 export { default as deleteProp } from './deleteProp'
 export { default as equalsObj } from './equalsObj'
 export { default as mergeObj } from './mergeObj'
 export { default as toObjString } from './toObjString'
+export * from './deepMergeObj'
