@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [1.4.0] 04-28-2025
+
+### Added
+
+- `isEmptyObj` to check if an element has no properties.
+
+### Changed
+
+- Fix: Simplify and broaden return types of `mergeObj` and `deepMergeObj`
+
 ## [1.3.0] 04-27-2025
 
 ### Added
