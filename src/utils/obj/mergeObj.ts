@@ -1,5 +1,4 @@
-import type { ShallowMergeResult } from 'src/types'
-import type { Table } from 'typestar'
+import type { ArrayToIntersect } from 'typestar'
 import { refMergeObj } from 'src/constants'
 
 /**
@@ -9,6 +8,6 @@ import { refMergeObj } from 'src/constants'
  *  @param sources - all target objects to merge.
  *  @returns the merged object.
  */
-export default function merge<T extends Table<unknown>[]>(...sources: T): ShallowMergeResult<T> {
-  return refMergeObj({}, ...sources) as unknown as ShallowMergeResult<T>
+export default function merge<T extends object[]>(...sources: T): ArrayToIntersect<T> {
+  return refMergeObj({}, ...sources)
 }
