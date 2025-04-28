@@ -533,6 +533,13 @@ declare module 'compresso' {
    */
   export function isEditable(descriptor?: PropertyDescriptor): boolean
   /**
+   * Checks if an object is empty (has no enumerable own properties).
+   *
+   * @param obj - The object to check for emptiness.
+   * @returns `true` if the object is empty or not a valid object (e.g., null or undefined), `false` otherwise.
+   */
+  export function isEmptyObj(obj?: AnyObject): boolean
+  /**
    * Checks if a value is an `Error`.
    *
    *  @param value - The value to check.
