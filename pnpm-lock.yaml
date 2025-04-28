@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       typestar:
-        specifier: ^1.10.1
-        version: 1.10.1
+        specifier: ^1.11.0
+        version: 1.11.0
     devDependencies:
       '@size-limit/file':
         specifier: ^11.2.0
@@ -2895,8 +2895,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typestar@1.10.1:
-    resolution: {integrity: sha512-r4oZ5oVDJhLEoCIDL1P0IVW9ICIXPNh4PSBh5i7xOqM/KQDA7FrOPn1dNKF3Imuphd2GzeW+R+on8zE6SocsJg==}
+  typestar@1.11.0:
+    resolution: {integrity: sha512-qY63sJVhtICsKAvLEsxmqzs5z3LnMTkg/9cZC4ZATNSH9UZo8QORyjd5ImM/C3gnmwLNH2+gujuNsn0spmvUaw==}
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -6654,7 +6654,7 @@ snapshots:
 
   typescript@5.8.3: {}
 
-  typestar@1.10.1: {}
+  typestar@1.11.0: {}
 
   unbox-primitive@1.1.0:
     dependencies:
