@@ -1,4 +1,4 @@
-import type { AnyFunction, AsyncFunction, Table } from 'typestar'
+import type { AnyFunction, AsyncFunction } from 'typestar'
 
 export type AsyncOnceFunction<T extends AnyFunction> = {
   (...args: Parameters<T>): Promise<ReturnType<T>>

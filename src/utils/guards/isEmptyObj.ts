@@ -1,4 +1,4 @@
-import type { AnyObject } from "typestar"
+import type { AnyObject } from 'typestar'
 
 /**
  * Checks if an object is empty (has no enumerable own properties).
@@ -8,6 +8,8 @@ import type { AnyObject } from "typestar"
  */
 export default function isEmptyObj(obj?: AnyObject): boolean {
     if (!obj) return true
-    for (const _ in obj) return false;
-    return true;
+    /* eslint-disable  guard-for-in */
+    for (const _ in obj) return false
+    /* eslint-enable  guard-for-in */
+    return true
 }
