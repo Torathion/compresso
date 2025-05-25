@@ -17,7 +17,7 @@ export default function sortedMergeArr<T, U = T>(
 ): (T | U)[] {
   const len1 = arr1.length
   const len2 = arr2.length
-  if (!outputArr) outputArr = new Array(len1 + len2)
+  outputArr ??= new Array(len1 + len2)
   // indexes
   let i1 = 0,
     i2 = 0,
