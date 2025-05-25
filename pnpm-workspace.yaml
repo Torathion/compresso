@@ -1,4 +1,2 @@
 onlyBuiltDependencies:
   - esbuild
-overrides:
-  eslint-config-shiny: link:../eslint-config-shiny
