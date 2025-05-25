@@ -248,17 +248,26 @@ declare module 'compresso' {
    */
   export const log2: (x: number) => number
   /**
-   * Calculates a number raised to the power of another number.
-   * @param base - The base number.
-   * @param exponent - The exponent.
-   * @returns The base raised to the power of the exponent.
+   *  Calculates a number raised to the power of another number.
+   *
+   *  @param base - The base number.
+   *  @param exponent - The exponent.
+   *  @returns The base raised to the power of the exponent.
    */
   export const pow: (base: number, exponent: number) => number
   /**
-   * Calculates a random number between 0 (inclusive) and 1 (exclusive).
-   * @returns A random number in the range [0, 1).
+   *  Calculates a random number between 0 (inclusive) and 1 (exclusive).
+   *
+   *  @returns A random number in the range [0, 1).
    */
   export const random: () => number
+  /**
+   *  Returns a supplied numeric expression rounded to the nearest integer.
+   *
+   *  @param x - the number to round.
+   *  @returns the rounded integer.
+   */
+  export const round: (x: number) => number
   /**
    * Calculates the sign of a number.
    * @param x - The number to evaluate.

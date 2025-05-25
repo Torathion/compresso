@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.4.1] 05-25-2025
+
+### Added
+
+- missing alias `round` for `Math.round`
+
 ## [1.4.0] 04-28-2025
 
 ### Added

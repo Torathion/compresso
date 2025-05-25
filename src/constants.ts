@@ -33,6 +33,7 @@ export const {
   PI,
   pow,
   random,
+  round,
   sign,
   sin,
   sinh,
