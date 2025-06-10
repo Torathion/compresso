@@ -1,4 +1,4 @@
-import type { AnyObject } from 'typestar'
+import type { Obj } from 'typestar'
 import { isArray } from 'src/constants'
 
 /**
@@ -7,6 +7,6 @@ import { isArray } from 'src/constants'
  *  @param value - The value to check.
  *  @returns `true` if the value is a valid object, otherwise `false`.
  */
-export default function isObj(value: unknown): value is AnyObject {
+export default function isObj(value: unknown): value is Obj {
   return typeof value === 'object' && value !== null && !isArray(value)
 }

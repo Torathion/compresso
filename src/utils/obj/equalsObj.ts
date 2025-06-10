@@ -1,4 +1,4 @@
-import type { AnyObject } from 'typestar'
+import type { Obj } from 'typestar'
 import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
 
 /**
@@ -8,7 +8,7 @@ import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
  *  @param o2 - The second object to compare
  *  @returns `true`, if objects have same keys and values, otherwise `false`.
  */
-export default function equalsObj(o1: AnyObject, o2: AnyObject): boolean {
+export default function equalsObj(o1: Obj, o2: Obj): boolean {
   const keys = getKeysForEqualsObj(o1, o2)
   if (!keys) return false
   for (const key of keys) {

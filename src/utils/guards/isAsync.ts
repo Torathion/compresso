@@ -1,4 +1,4 @@
-import type { AnyFunction, AsyncFunction } from 'typestar'
+import type { AnyFn, AsyncFn } from 'typestar'
 
 /**
  * Checks if a given function is an async function.
@@ -6,6 +6,6 @@ import type { AnyFunction, AsyncFunction } from 'typestar'
  * @param func - The function to check
  * @returns `true` if the function is an async function, otherwise `false`
  */
-export default function isAsync(func: AnyFunction): func is AsyncFunction {
+export default function isAsync(func: AnyFn): func is AsyncFn {
   return !!func && func.constructor.name === 'AsyncFunction'
 }
