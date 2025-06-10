@@ -39,14 +39,14 @@
   "devDependencies": {
     "@size-limit/file": "^11.2.0",
     "@size-limit/preset-app": "^11.2.0",
-    "@vitest/coverage-v8": "^3.1.4",
-    "esbuild": "^0.25.4",
-    "eslint": "^9.27.0",
+    "@vitest/coverage-v8": "^3.2.3",
+    "esbuild": "^0.25.5",
+    "eslint": "^9.28.0",
     "eslint-config-shiny": "^4.2.1",
     "size-limit": "^11.2.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vitest": "^3.1.4"
+    "vitest": "^3.2.3"
   },
   "dependencies": {
     "typestar": "^2.0.0"
