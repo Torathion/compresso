@@ -54,11 +54,11 @@
   "size-limit": [
     {
       "path": "dist/index.js",
-      "limit": "4500 ms"
+      "limit": "10kB"
     },
     {
       "path": "dist/index.mjs",
-      "limit": "4500ms"
+      "limit": "10kB"
     }
   ]
 }
