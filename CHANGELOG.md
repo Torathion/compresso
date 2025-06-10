@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.4.2] 06-10-2025
+
+### Fix
+
+- Updated `typestar` types to newest version (2.1.0)
+
 ## [1.4.1] 05-25-2025
 
 ### Added

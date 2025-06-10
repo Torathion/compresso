@@ -1,6 +1,6 @@
 {
   "name": "compresso",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Debloat your code with a nice cup of compresso",
   "types": "./index.d.ts",
   "main": "./dist/index.js",
