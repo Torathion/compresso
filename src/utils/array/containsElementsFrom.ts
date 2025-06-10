@@ -1,4 +1,4 @@
-import type { HasToString } from 'typestar'
+import type { Stringifyable } from 'typestar'
 
 /**
  *  Checks if the source array contains elements from the target array
@@ -9,7 +9,7 @@ import type { HasToString } from 'typestar'
  *
  *  @returns whether the source array contains elements from the target array.
  */
-export default function containsElementsFrom<T extends HasToString<unknown>>(source: T[], target: T[]): boolean {
+export default function containsElementsFrom<T extends Stringifyable<unknown>>(source: T[], target: T[]): boolean {
   const lookup: Record<string, T> = {}
   let i: number
   for (i = target.length - 1; i >= 0; i--) lookup[target[i].toString()] = target[i]

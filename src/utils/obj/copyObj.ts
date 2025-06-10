@@ -1,4 +1,4 @@
-import type { AnyObject } from 'typestar'
+import type { Obj } from 'typestar'
 import { refMergeObj } from 'src/constants'
 
 /**
@@ -9,6 +9,6 @@ import { refMergeObj } from 'src/constants'
  *  @param obj - The input object to be copied.
  *  @returns A shallow copy of the input object.
  */
-export default function copyObj<T extends AnyObject>(obj: T): T {
+export default function copyObj<T extends Obj>(obj: T): T {
   return refMergeObj({}, obj)
 }

@@ -1,4 +1,4 @@
-import type { AnyObject } from 'typestar'
+import type { Obj } from 'typestar'
 import { isArray } from 'src/constants'
 import getKeysForEqualsObj from 'src/internal/getKeysForObjEquals'
 import deepArrEquals from '../array/deepArrEquals'
@@ -15,7 +15,7 @@ import isObj from '../guards/isObj'
  * @param o2 - Second object to compare
  * @returns `true` if objects are deeply equal, otherwise `false`.
  */
-export default function deepEqualsObj(o1: AnyObject, o2: AnyObject): boolean {
+export default function deepEqualsObj(o1: Obj, o2: Obj): boolean {
   const keys = getKeysForEqualsObj(o1, o2)
   if (!keys) return false
   for (const key of keys) {

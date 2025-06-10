@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       typestar:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.1.0
+        version: 2.1.0
     devDependencies:
       '@size-limit/file':
         specifier: ^11.2.0
@@ -3072,8 +3072,8 @@ packages:
   typestar@1.12.0:
     resolution: {integrity: sha512-X8Zt/HmZOfToxd7hn+X9xQp09YLU+UAhCGid4ypfMgQhurWUrPwC2x26f3hz7dk+w2i4XNUrMzQx4yEcKCaWmg==}
 
-  typestar@2.0.0:
-    resolution: {integrity: sha512-KbSrhPMjCFkVN7Ff+Y9PawZ0snok/ZzZaWxlhxfmzPL0RmadebzPT/RdypIWPzyt6M2cjgcNhl3nCuEVPO07TQ==}
+  typestar@2.1.0:
+    resolution: {integrity: sha512-k1GEoqWb3S9qOALNuLEF98Glux1xJmcu5MG+668/eftVWv1pP02ope7FdasTwyWUx98gnjun3TsqA6KMPyVRjQ==}
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -7070,7 +7070,7 @@ snapshots:
 
   typestar@1.12.0: {}
 
-  typestar@2.0.0: {}
+  typestar@2.1.0: {}
 
   unbox-primitive@1.1.0:
     dependencies:

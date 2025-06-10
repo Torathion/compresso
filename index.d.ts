@@ -1,11 +1,11 @@
 import {
   AnyArray,
-  AnyObject,
-  AnyFunction,
+  Obj,
+  AnyFn,
   AnyNumberArray,
-  AsyncFunction,
+  AsyncFn,
   ClassConstructor,
-  HasToString,
+  Stringifyable,
   MaybeArray,
   Table,
   WithReadonly,
@@ -425,7 +425,7 @@ declare module 'compresso' {
    *  @param obj - The input object to be copied.
    *  @returns A shallow copy of the input object.
    */
-  export function copyObj<T extends AnyObject>(obj: T): T
+  export function copyObj<T extends Obj>(obj: T): T
   /**
    * Performs a deep equality comparison between two objects.
    *
@@ -437,7 +437,7 @@ declare module 'compresso' {
    * @param o2 - Second object to compare
    * @returns `true` if objects are deeply equal, otherwise `false`.
    */
-  export function deepEqualsObj(o1: AnyObject, o2: AnyObject): boolean
+  export function deepEqualsObj(o1: Obj, o2: Obj): boolean
   /**
   *  Deeply merges multiple objects into a new one.
   *  Nested objects are recursively merged, while non-object values overwrite existing keys.
@@ -461,7 +461,7 @@ declare module 'compresso' {
    *  @param o2 - The second object to compare
    *  @returns `true`, if objects have same keys and values, otherwise `false`.
    */
-  export function equalsObj(o1: AnyObject, o2: AnyObject): boolean
+  export function equalsObj(o1: Obj, o2: Obj): boolean
   /**
   *  Merges two or more objects into one, overwriting duplicating keys depending on the order of the passed arguments (left to right).
   *  This function creates a new object instance on merge.
@@ -491,7 +491,7 @@ declare module 'compresso' {
    * @param func - The function to check
    * @returns `true` if the function is an async function, otherwise `false`
    */
-  export function isAsync(func: AnyFunction): func is AsyncFunction
+  export function isAsync(func: AnyFn): func is AsyncFn
   /**
    *  Checks if a value is an async iterable.
    *
@@ -547,7 +547,7 @@ declare module 'compresso' {
    * @param obj - The object to check for emptiness.
    * @returns `true` if the object is empty or not a valid object (e.g., null or undefined), `false` otherwise.
    */
-  export function isEmptyObj(obj?: AnyObject): boolean
+  export function isEmptyObj(obj?: Obj): boolean
   /**
    * Checks if a value is an `Error`.
    *
@@ -561,7 +561,7 @@ declare module 'compresso' {
    *  @param value - The value to check.
    *  @returns `true` if the value is a function, otherwise `false`.
    */
-  export function isFunction(value: unknown): value is AnyFunction
+  export function isFunction(value: unknown): value is AnyFn
   /**
    *  Checks if a function is a generator function.
    *
@@ -596,7 +596,7 @@ declare module 'compresso' {
    *  @param value - The value to check.
    *  @returns `true` if the value is a valid object, otherwise `false`.
    */
-  export function isObj(value: unknown): value is AnyObject
+  export function isObj(value: unknown): value is Obj
   /**
    *  Checks if a value is a string.
    *
@@ -701,7 +701,7 @@ declare module 'compresso' {
    *
    *  @returns whether the source array contains elements from the target array.
    */
-  export function containsElementsFrom<T extends HasToString<unknown>>(source: T[], target: T[]): boolean
+  export function containsElementsFrom<T extends Stringifyable<unknown>>(source: T[], target: T[]): boolean
   /**
    *  Compares two arrays with each others and takes nested arrays into consideration.
    *
@@ -807,13 +807,13 @@ declare module 'compresso' {
   /**
    *  Creates a bound function that maintains its context from wherever it's called.
    *
-   *  @template T - The type of the context object extending AnyObject.
+   *  @template T - The type of the context object extending Obj.
    *  @param context - The object containing the function to bind.
    *  @param key - The key of the function property to bind.
    *  @returns rhe bound function.
    *  @throws if the property at the specified key is not a function.
    */
-  export function bindSelf<T extends AnyObject>(context: T, key: keyof T): AnyFunction
+  export function bindSelf<T extends Obj>(context: T, key: keyof T): AnyFn
   /**
    *  A no-operation function that performs no action and returns undefined.
    *
@@ -854,11 +854,11 @@ declare module 'compresso' {
    *  Subsequent calls return the cached result without re-executing the original function.
    *  The wrapped function includes `called` and `value` properties to track its state.
    *
-   *  @template T - The type of the function to wrap, extending AnyFunction.
+   *  @template T - The type of the function to wrap, extending AnyFn.
    *  @param fn - The function to execute only once.
    *  @returns A wrapped function that runs once and caches its result.
    */
-  export function once<T extends AnyFunction>(fn: T): OnceFunction<T>
+  export function once<T extends AnyFn>(fn: T): OnceFunction<T>
   /**
    * Creates an async function that executes only once and caches its result.
    *
@@ -866,18 +866,18 @@ declare module 'compresso' {
    * Subsequent calls return the cached result without re-executing the original function.
    * The wrapped function includes `called` and `value` properties to track its state.
    *
-   * @template T - The type of the async function to wrap, extending AnyFunction.
+   * @template T - The type of the async function to wrap, extending AnyFn.
    * @param fn - The async function to execute only once.
    * @returns A wrapped async function that runs once and caches its result.
    */
-  export function onceAsync<T extends AnyFunction>(fn: T): AsyncOnceFunction<T>
+  export function onceAsync<T extends AnyFn>(fn: T): AsyncOnceFunction<T>
   /**
    *  Wraps a function to make it "safe" by catching any errors and returning silently without issues.
    *
    *  @param fn - The function to make safe
    *  @returns A wrapped function that returns either the original result or undefined.
    */
-  export function safe<T extends AnyFunction>(fn: T): SafeFunction<T>
+  export function safe<T extends AnyFn>(fn: T): SafeFunction<T>
   /**
    * Wraps an async function to safely handle errors by returning a Promise that
    * resolves to either the function's result or `undefined` if an error occurs.

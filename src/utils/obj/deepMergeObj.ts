@@ -1,4 +1,4 @@
-import type { ArrayToIntersect, Table } from 'typestar'
+import type { ArrayToIntersect, Obj, Table } from 'typestar'
 import { keysOf, refMergeObj } from 'src/constants'
 import { isObj } from '../guards'
 
@@ -10,7 +10,7 @@ import { isObj } from '../guards'
  *  @param sources - The source objects to merge.
  *  @returns A new object containing the merged properties.
  */
-export function deepMergeObj<T extends object[]>(...sources: T): ArrayToIntersect<T> {
+export function deepMergeObj<T extends Obj[]>(...sources: T): ArrayToIntersect<T> {
   const target: Table<unknown> = {}
 
   for (const source of sources) {
