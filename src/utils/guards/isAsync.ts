@@ -7,5 +7,5 @@ import type { Fn, AsyncFn } from 'typestar'
  * @returns `true` if the function is an async function, otherwise `false`
  */
 export default function isAsync(func: Fn): func is AsyncFn {
-  return !!func && func.constructor.name === 'AsyncFn'
+  return !!func && func.constructor.name === 'AsyncFunction'
 }

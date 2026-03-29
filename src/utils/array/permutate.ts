@@ -17,7 +17,7 @@ import arrContainsDeep from './arrContainsDeep'
 export default function permutate<T>(arr: Arr<T>): Arr<T>[] {
   const len = arr.length
   const perms: Arr<T>[] = [arr.slice()]
-  const cache = new Array(len).fill(0)
+  const cache = new Uint32Array(len)
   let i = 1,
     k: number,
     p,

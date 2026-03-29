@@ -10,7 +10,7 @@ import { deepEqualsObj } from '../obj'
  * @param arr2 - second possible nested array.
  * @returns
  */
-export default function deepArrEquals(arr1: MaybeArray<Arr<unknown>>, arr2: unknown[]): boolean {
+export default function deepArrEquals(arr1: MaybeArray<Arr>, arr2: unknown[]): boolean {
   const len = arr1.length
   if (len !== arr2.length) return false
   let v1, v2

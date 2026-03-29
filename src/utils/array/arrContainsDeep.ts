@@ -16,7 +16,9 @@ import deepArrEquals from './deepArrEquals'
  */
 export default function arrContainsDeep<T>(source: MaybeArray<T>[], target: MaybeArray<T>): boolean {
   const isTargetArray = isArray(target)
-  for (const element of source) {
+
+  for (let i = 0, len = source.length; i < len; i++) {
+    const element = source[i]
     const isElementArray = isArray(element)
     if (
       (isElementArray && isTargetArray && (deepArrEquals(element, target) || arrContainsDeep(element, target))) ||
