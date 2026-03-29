@@ -40,4 +40,18 @@ describe('isEmptyObj', () => {
         expect(isEmptyObj([])).toBe(true);
         expect(isEmptyObj([1, 2, 3])).toBe(false);
     });
+
+    it('should see objects with only undefined properties to be empty as well', () => {
+      expect(isEmptyObj({ a: null })).toBe(true)
+      expect(isEmptyObj({ a: undefined })).toBe(true)
+
+      expect(isEmptyObj({ a: null, b: 1 })).toBe(false)
+      expect(isEmptyObj({ a: undefined, b: 'Hello' })).toBe(false)
+    })
+
+    it('should not see objects with primitive falsy values to be empty', () => {
+      expect(isEmptyObj({ a: '' })).toBe(false)
+      expect(isEmptyObj({ a: 0 })).toBe(false)
+      expect(isEmptyObj({ a: false })).toBe(false)
+    })
 });
