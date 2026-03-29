@@ -1,4 +1,4 @@
-import type { AnyNumberArray, WithReadonly } from 'typestar'
+import type { NumArray, WithReadonly } from 'typestar'
 
 /**
  *	Finds the index of the range pair the target number is in.
@@ -15,7 +15,7 @@ import type { AnyNumberArray, WithReadonly } from 'typestar'
  * @param value - the value to check for each range
  * @returns the interpreted index of the pair
  */
-export default function arrRangesIndexOf(arr: WithReadonly<AnyNumberArray>, value: number): number {
+export default function arrRangesIndexOf(arr: WithReadonly<NumArray>, value: number): number {
   let max = arr.length - 1
   if (!max || (max + 1) & 1 || value < arr[0] || value > arr[max]) return -1
   let min = 0

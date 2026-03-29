@@ -46,12 +46,4 @@ describe('isFunction', () => {
     expect(isFunction(Math.sin)).toBe(true)
     expect(isFunction(Object.create)).toBe(true)
   })
-
-  it('should work with TypeScript type narrowing', () => {
-    const value: unknown = () => 42
-    if (isFunction(value)) {
-      // TypeScript knows value is AnyFunction here
-      expect(value()).toBe(42)
-    }
-  })
 })

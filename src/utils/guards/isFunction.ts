@@ -1,4 +1,4 @@
-import type { AnyFn } from 'typestar'
+import type { Fn } from 'typestar'
 
 /**
  *  Checks if a value is a function.
@@ -6,6 +6,6 @@ import type { AnyFn } from 'typestar'
  *  @param value - The value to check.
  *  @returns `true` if the value is a function, otherwise `false`.
  */
-export default function isFunction(value: unknown): value is AnyFn {
+export default function isFunction(value: unknown): value is Fn {
   return typeof value === 'function'
 }

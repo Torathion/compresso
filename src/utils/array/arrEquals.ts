@@ -1,4 +1,4 @@
-import type { AnyArray, WithReadonly } from 'typestar'
+import type { Arr, WithReadonly } from 'typestar'
 
 /**
  *  Checks whether two arrays are strictly equal.
@@ -14,7 +14,7 @@ import type { AnyArray, WithReadonly } from 'typestar'
  *  @param arr2 - The second array to compare.
  *  @returns `true` if the arrays are strictly equal, otherwise `false`.
  */
-export default function arrEquals<T>(arr1: WithReadonly<AnyArray<T>>, arr2: AnyArray<T>): boolean {
+export default function arrEquals<T>(arr1: WithReadonly<Arr<T>>, arr2: Arr<T>): boolean {
   const len = arr1.length
   if (len !== arr2.length) return false
   for (let i = len - 1; i >= 0; i--) if (arr1[i] !== arr2[i]) return false

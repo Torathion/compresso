@@ -1,4 +1,4 @@
-import type { ArrayToIntersect } from 'typestar'
+import type { Intersect } from 'typestar'
 import { refMergeObj } from 'src/constants'
 
 /**
@@ -8,6 +8,6 @@ import { refMergeObj } from 'src/constants'
  *  @param sources - all target objects to merge.
  *  @returns the merged object.
  */
-export default function merge<T extends object[]>(...sources: T): ArrayToIntersect<T> {
+export default function merge<T extends object[]>(...sources: T): Intersect<T> {
   return refMergeObj({}, ...sources)
 }

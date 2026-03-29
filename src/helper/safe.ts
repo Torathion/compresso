@@ -1,5 +1,5 @@
 import type { SafeFunction } from 'src/types'
-import type { AnyFunction } from 'typestar'
+import type { Fn } from 'typestar'
 import { refMergeObj } from 'src/constants'
 
 /**
@@ -8,7 +8,7 @@ import { refMergeObj } from 'src/constants'
  *  @param fn - The function to make safe
  *  @returns A wrapped function that returns either the original result or undefined.
  */
-export default function safe<T extends AnyFunction>(fn: T): SafeFunction<T> {
+export default function safe<T extends Fn>(fn: T): SafeFunction<T> {
   const f = (...args: Parameters<T>): undefined | ReturnType<T> => {
     try {
       return fn(...args)

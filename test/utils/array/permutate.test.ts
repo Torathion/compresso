@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import { permutate } from '../../../src'
+import type { Arr } from 'typestar'
 
 // Helper to sort arrays of arrays for consistent comparison
-const sortPermutations = <T>(perms: AnyArray<T>[]): AnyArray<T>[] => perms.sort((a, b) => a.join(',').localeCompare(b.join(',')))
+const sortPermutations = <T>(perms: Arr<T>[]): Arr<T>[] => perms.sort((a, b) => a.join(',').localeCompare(b.join(',')))
 
 describe('permutate', () => {
   it('returns single permutation for empty array', () => {

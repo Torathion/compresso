@@ -1,5 +1,5 @@
 import type { AsyncSafeFunction } from 'src/types'
-import type { AsyncFunction } from 'typestar'
+import type { AsyncFn } from 'typestar'
 import { refMergeObj } from 'src/constants'
 
 /**
@@ -10,7 +10,7 @@ import { refMergeObj } from 'src/constants'
  * @param f - The async function to wrap
  * @returns A wrapped async function that never throws.
  */
-export default function safeAsync<T extends AsyncFunction>(f: T): AsyncSafeFunction<T> {
+export default function safeAsync<T extends AsyncFn>(f: T): AsyncSafeFunction<T> {
   const fn = async (...args: Parameters<T>): Promise<undefined | ReturnType<T>> => {
     try {
       return (await f(...args)) as any
