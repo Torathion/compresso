@@ -42,6 +42,6 @@ describe('isEmptyObj', () => {
       expect(isDeepEmptyObj([[undefined, [null]]])).toBe(true)
 
       expect(isDeepEmptyObj([[[[[{ a: 5 }]]]]])).toBe(false)
-       expect(isDeepEmptyObj([[[false, [[{}]]]]])).toBe(false)
+      expect(isDeepEmptyObj([[[false, [[{}]]]]])).toBe(false)
     })
 });

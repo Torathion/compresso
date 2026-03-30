@@ -50,7 +50,7 @@
     "vitest": "^4.1.2"
   },
   "dependencies": {
-    "typestar": "^3.0.0"
+    "typestar": "^3.0.1"
   },
   "size-limit": [
     {
