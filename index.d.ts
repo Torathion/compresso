@@ -450,6 +450,44 @@ declare module 'compresso' {
    */
   export function equalsObj(o1: Obj, o2: Obj): boolean
   /**
+   *  Extracts a property from a given object and deletes said property from it.
+   *
+   * @param obj - target object to extract from
+   * @param key - property key of the property to extract.
+   * @returns
+   */
+  export function extractProp<T, U extends Table<T>>(obj: U, key: keyof U): T | undefined
+  /**
+   *  Searches an array of objects for the first object where a nested property (specified by a dot-separated key path)
+   *  matches the given value.
+   *
+   *  @template T - The type of objects in the source array
+   *  @param source - The array of objects to search.
+   *  @param key - The property key, which may include dot-separated segments for nested access.
+   *  @param value - The value to match against the nested property.
+   *  @returns The first matching object from the array, or `undefined` if none found.
+   *  @example
+   *  const users = [
+   *    { id: 1, profile: { name: 'Alice' } },
+   *    { id: 2, profile: { name: 'Bob' } }
+   *  ];
+   *  findByNested(users, 'profile.name', 'Alice'); // Returns { id: 1, profile: { name: 'Alice' } }
+   */
+  export function findByNested<T extends Obj>(source: T[], key: string, value: unknown): T | undefined
+  /**
+   *  Retrieves the value of a nested property from an object, specified by a dot-separated key path.
+   *
+   *  @template T - The expected return type of the nested value.
+   *  @param source - The source object to access.
+   *  @param key - The property key, which may include dot-separated segments for nested access.
+   *  @returns The value at the nested path, or `undefined` if not found.
+   *  @example
+   *  const user = { id: 1, profile: { name: 'Alice', address: { city: 'Berlin' } } };
+   *  getNested<string>(user, 'profile.address.city'); // Returns 'Berlin'
+   *  getNested(user, 'invalid.path'); // Returns undefined
+   */
+  export function getNested<T>(source: Obj, key: string): T | undefined
+  /**
    *  Merges two or more objects into one, overwriting duplicating keys depending on the order of the passed arguments (left to right).
    *  This function creates a new object instance on merge.
    *
@@ -457,6 +495,42 @@ declare module 'compresso' {
    *  @returns the merged object.
    */
   export function mergeObj<T extends object[]>(...sources: T): Intersect<T>
+  /**
+   *  Determines the most common value of a given property name in an array of objects.
+   *
+   *  @param arr - target array of objects.
+   *  @param prop - the property name to evaluate.
+   *  @returns the most common value of the given property name.
+   */
+  export function mostCommon<T extends Obj>(arr: T[], prop: keyof T): T[keyof T] | undefined
+  /**
+   *  Generates a diff object between two same-shaped objects to only use a partial structure with only the changed values.
+   *  Intended to be used for update requests in databases, therefore it has a third optional argument to preserve property names
+   *  for nested objects identification.
+   *
+   *  @param before - object before the update.
+   *  @param after - object after the update.
+   *  @param opts - keys to preserve and keep in the update object. (optional)
+   *  @returns the update object with only the updated (and preserved) property values.
+   */
+  export function objDiff<T>(before: T, after: T, preserved?: (string | number)[]): any
+  /**
+   *  Counts all occurrences of all property values of a given property name in an array of objects.
+   *
+   * @param arr - target array of objects.
+   * @param prop - the target property name
+   * @returns all occurrences of each value in a map.
+   */
+  export function occurrences<T extends Obj>(arr: T[], prop: keyof T): Map<T[keyof T], number>
+  /**
+   *  Finds the most common values of a property name in an array of objects.
+   *  Key difference towards `mostCommon` is that it returns an array of all values that have a tied most common occurrence.
+   *
+   *  @param arr - target array of objects.
+   *  @param prop - target property to evaluate.
+   *  @returns all values with the most common occurrence.
+   */
+  export function tiedMostCommon<T extends Obj>(arr: T[], prop: keyof T): T[keyof T][]
   /**
    *  Converts a value to its object string representation.
    *
@@ -535,6 +609,13 @@ declare module 'compresso' {
    * @returns `true` if the object is empty or not a valid object (e.g., null or undefined), `false` otherwise.
    */
   export function isEmptyObj(obj?: Obj): boolean
+  /**
+   * Checks if an object is empty (has no enumerable own properties).
+   *
+   * @param obj - The object to check for emptiness.
+   * @returns `true` if the object is empty or not a valid object (e.g., null or undefined), `false` otherwise.
+   */
+  export function isDeepEmptyObj(obj: Obj): boolean
   /**
    * Checks if a value is an `Error`.
    *
