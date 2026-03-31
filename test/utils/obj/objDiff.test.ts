@@ -4,7 +4,7 @@ import { objDiff } from 'src/utils'
 describe('objDiff', () => {
   it('returns empty object when values are identical', () => {
     const obj = { name: 'John', age: 30, active: true }
-    const deepObj = { a: { b: { c: 1, d: 2 }}}
+    const deepObj = { a: { b: { c: 1, d: 2 } } }
 
     expect(objDiff(obj, obj)).toEqual({})
     expect(objDiff(deepObj, deepObj)).toEqual({})
