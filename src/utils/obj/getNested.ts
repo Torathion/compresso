@@ -13,10 +13,10 @@ import isObj from '../guards/isObj'
  *  getNested<string>(user, 'profile.address.city'); // Returns 'Berlin'
  *  getNested(user, 'invalid.path'); // Returns undefined
  */
-export default function getNested<T>(source: Obj, key: string): T | undefined {
+export default function getNested(source: Obj, key: string): unknown {
   if (!key.includes('.')) return source[key]
   const segments = key.split('.')
-  let current = source
+  let current: unknown = source
 
   const depth = segments.length
   let d = 0

@@ -17,7 +17,7 @@ export default function tiedMostCommon<T extends Obj>(arr: T[], prop: keyof T): 
   // First pass: build frequencies and find maxCount
   for (let i = 0, len = arr.length; i < len; i++) {
     const val = arr[i][prop]
-    const currentCount = (freqMap.get(val) || 0) + 1
+    const currentCount = (freqMap.get(val) ?? 0) + 1
     freqMap.set(val, currentCount)
     if (currentCount > maxCount) {
       maxCount = currentCount

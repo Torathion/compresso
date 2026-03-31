@@ -11,7 +11,7 @@ export default function occurrences<T extends Obj>(arr: T[], prop: keyof T): Map
   const map = new Map<T[keyof T], number>()
   for (const item of arr) {
     const val = item[prop]
-    map.set(val, (map.get(val) || 0) + 1)
+    map.set(val, (map.get(val) ?? 0) + 1)
   }
 
   return map
