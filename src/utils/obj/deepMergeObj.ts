@@ -18,7 +18,7 @@ export function deepMergeObj<T extends Obj[]>(...sources: T): Intersect<T> {
     for (const key of keysOf(source)) {
       if (isObj(source[key])) {
         // Recursively merge nested objects
-        target[key] = deepMergeObj(target[key] ?? {} as any, source[key])
+        target[key] = deepMergeObj(target[key] ?? ({} as any), source[key])
       } else {
         // Directly assign non-object values
         refMergeObj(target, { [key]: source[key] })

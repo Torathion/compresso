@@ -19,7 +19,7 @@ export default defineConfig({
     coverage: {
       enabled: true,
       provider: 'v8',
-      include: ['src/**'],                    // Recommended: be explicit
+      include: ['src/**'], // Recommended: be explicit
       exclude: [
         '**/*.js',
         '**/*.[cm]js',
@@ -29,18 +29,18 @@ export default defineConfig({
         '**/constants.ts',
         'src/internal/**',
         '**/*.config.ts',
-        'test/test-utils.ts',
+        'test/test-utils.ts'
       ],
       reporter: ['text', 'text-summary', 'json', 'json-summary', 'html'],
       reportsDirectory: './coverage',
       reportOnFailure: true,
-      thresholds: { lines: 80, functions: 80, branches: 80, statements: 80 },
+      thresholds: { lines: 80, functions: 80, branches: 80, statements: 80 }
     },
 
     reporters: isCI
-      ? ['verbose', 'json', 'junit']           // or simplify to fewer in CI
+      ? ['verbose', 'json', 'junit'] // or simplify to fewer in CI
       : ['default', 'hanging-process'],
 
     silent: isCI
-  },
+  }
 })

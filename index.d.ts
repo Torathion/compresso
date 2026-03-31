@@ -1,17 +1,4 @@
-import {
-  Arr,
-  Obj,
-  Fn,
-  NumArray,
-  AsyncFn,
-  ClassConstructor,
-  Stringifyable,
-  MaybeArray,
-  Table,
-  WithReadonly,
-  Primitive,
-  Intersect
-} from 'typestar'
+import { Arr, Obj, Fn, NumArray, AsyncFn, ClassConstructor, Stringifyable, MaybeArray, Table, WithReadonly, Primitive, Intersect } from 'typestar'
 
 declare module 'compresso' {
   /**
@@ -377,13 +364,13 @@ declare module 'compresso' {
    * @param obj - the target object
    * @returns An array of all property names of the object.
    */
-  export const keysOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => string[];
+  export const keysOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => string[]
   /**
    * Returns an array of a given object's own enumerable property values.
    * @param obj - the target object
    * @returns An array containing the given object's own enumerable property values.
    */
-  export const valuesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => T[];
+  export const valuesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => T[]
   /**
    * Determines whether an object has a property with the specified name as its own property.
    * @param obj - the target object
@@ -439,13 +426,13 @@ declare module 'compresso' {
    */
   export function deepEqualsObj(o1: Obj, o2: Obj): boolean
   /**
-  *  Deeply merges multiple objects into a new one.
-  *  Nested objects are recursively merged, while non-object values overwrite existing keys.
-  *  Non-object sources are skipped.
-  *
-  *  @param sources - The source objects to merge.
-  *  @returns A new object containing the merged properties.
-  */
+   *  Deeply merges multiple objects into a new one.
+   *  Nested objects are recursively merged, while non-object values overwrite existing keys.
+   *  Non-object sources are skipped.
+   *
+   *  @param sources - The source objects to merge.
+   *  @returns A new object containing the merged properties.
+   */
   export function deepMergeObj<T extends object[]>(...sources: T): Intersect<T>
   /**
    *  Deletes a specified property from an object.
@@ -463,12 +450,12 @@ declare module 'compresso' {
    */
   export function equalsObj(o1: Obj, o2: Obj): boolean
   /**
-  *  Merges two or more objects into one, overwriting duplicating keys depending on the order of the passed arguments (left to right).
-  *  This function creates a new object instance on merge.
-  *
-  *  @param sources - all target objects to merge.
-  *  @returns the merged object.
-  */
+   *  Merges two or more objects into one, overwriting duplicating keys depending on the order of the passed arguments (left to right).
+   *  This function creates a new object instance on merge.
+   *
+   *  @param sources - all target objects to merge.
+   *  @returns the merged object.
+   */
   export function mergeObj<T extends object[]>(...sources: T): Intersect<T>
   /**
    *  Converts a value to its object string representation.

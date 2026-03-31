@@ -1,4 +1,3 @@
-
 import { isArray } from 'src/constants'
 import isFunction from './isFunction'
 import isObj from './isObj'

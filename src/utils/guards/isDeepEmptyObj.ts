@@ -1,6 +1,6 @@
-import type { Obj } from "typestar"
-import { isArray } from "src/constants"
-import isObj from "./isObj"
+import type { Obj } from 'typestar'
+import { isArray } from 'src/constants'
+import isObj from './isObj'
 
 /**
  * Checks if an object is empty (has no enumerable own properties).
@@ -15,8 +15,7 @@ export default function isDeepEmptyObj(obj: Obj): boolean {
     const prop = obj[x]
     if (isObj(prop)) {
       if (!isDeepEmptyObj(prop)) return false
-    }
-    else if (isArray(prop)) {
+    } else if (isArray(prop)) {
       if (!isDeepEmptyObj(prop)) return false
     } else if (prop != null) return false
   }

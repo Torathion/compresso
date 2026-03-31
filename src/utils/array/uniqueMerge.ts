@@ -7,7 +7,7 @@
  * @returns A new array containing unique elements from both input arrays, in the order of their first appearance.
  */
 export default function uniqueMerge<T extends unknown[]>(arr1: T, arr2?: T): T {
-    let arr = arr1.slice()
-    if (arr2) arr = arr.concat(arr2)
-    return [...new Set(arr)] as T
+  let arr = arr1.slice()
+  if (arr2) arr = arr.concat(arr2)
+  return [...new Set(arr)] as T
 }

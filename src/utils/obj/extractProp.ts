@@ -1,5 +1,5 @@
-import { hasProp } from "src/constants"
-import type { Table } from "typestar"
+import { hasProp } from 'src/constants'
+import type { Table } from 'typestar'
 
 /**
  *  Extracts a property from a given object and deletes said property from it.
