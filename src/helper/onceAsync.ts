@@ -1,5 +1,5 @@
 import type { AsyncOnceFunction } from 'src/types'
-import type { AnyFunction } from 'typestar'
+import type { Fn } from 'typestar'
 import { refMergeObj } from 'src/constants'
 
 /**
@@ -9,11 +9,11 @@ import { refMergeObj } from 'src/constants'
  * Subsequent calls return the cached result without re-executing the original function.
  * The wrapped function includes `called` and `value` properties to track its state.
  *
- * @template T - The type of the async function to wrap, extending AnyFunction.
+ * @template T - The type of the async function to wrap, extending Fn.
  * @param fn - The async function to execute only once.
  * @returns A wrapped async function that runs once and caches its result.
  */
-export default function onceAsync<T extends AnyFunction>(fn: T): AsyncOnceFunction<T> {
+export default function onceAsync<T extends Fn>(fn: T): AsyncOnceFunction<T> {
   const f: AsyncOnceFunction<T> = (async (...args: Parameters<T>): Promise<ReturnType<T>> => {
     if (f.called) return f.value!
     f.called = true

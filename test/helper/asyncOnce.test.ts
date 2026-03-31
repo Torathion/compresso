@@ -1,5 +1,5 @@
+import onceAsync from 'src/helper/onceAsync'
 import { describe, it, expect, vi } from 'vitest'
-import { onceAsync } from 'src'
 
 describe('onceAsync', () => {
   it('should call the async function only once and cache the result', async () => {

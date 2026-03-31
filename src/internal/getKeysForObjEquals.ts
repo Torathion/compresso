@@ -1,4 +1,4 @@
-import type { AnyObject } from 'typestar'
+import type { Obj } from 'typestar'
 import { keysOf } from 'src/constants'
 
 /**
@@ -8,7 +8,7 @@ import { keysOf } from 'src/constants'
  * @param o2 - Second object to compare.
  * @returns either `undefined`, if the comparison should terminate with `false`, otherwise the `Set` of keys.
  */
-export default function getKeysForEqualsObj(o1: AnyObject, o2: AnyObject): Set<string> | undefined {
+export default function getKeysForEqualsObj(o1: Obj, o2: Obj): Set<string> | undefined {
   const o1Keys = keysOf(o1)
   const o2Keys = keysOf(o2)
   if (o1Keys.length !== o2Keys.length) return

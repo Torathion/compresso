@@ -1,4 +1,4 @@
-import type { AnyArray } from 'typestar'
+import type { Arr } from 'typestar'
 
 /**
  *  Shuffles an array in place using the Fisher-Yates (Knuth) shuffle algorithm
@@ -7,7 +7,7 @@ import type { AnyArray } from 'typestar'
  *  @param arr - The input array to be shuffled
  *  @returns The shuffled array (same reference as input)
  */
-export default function shuffle<T>(arr: AnyArray<T>): AnyArray<T> {
+export default function shuffle<T>(arr: Arr<T>): Arr<T> {
   let counter = arr.length,
     index = 0,
     temp

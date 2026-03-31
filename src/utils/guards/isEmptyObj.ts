@@ -7,9 +7,9 @@ import type { Obj } from 'typestar'
  * @returns `true` if the object is empty or not a valid object (e.g., null or undefined), `false` otherwise.
  */
 export default function isEmptyObj(obj?: Obj): boolean {
-    if (!obj) return true
-    /* eslint-disable  guard-for-in */
-    for (const _ in obj) return false
-    /* eslint-enable  guard-for-in */
-    return true
+  if (!obj) return true
+
+  for (const x in obj) if (obj[x] != undefined) return false
+
+  return true
 }

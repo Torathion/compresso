@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## [1.5.0] 03-31-2026
+
+### :star: Added
+
+- New Utilities:
+  - `extractProp`
+  - `findByNested`
+  - `getNested`
+  - `isDeepEmptyObj`
+  - `mostCommon`
+  - `objDiff`
+  - `occurrences`
+  - `tiedMostCommon`
+
+### :rocket: Performance
+
+- Tiny micro optimizations regarding loops
+
+### :wrench: Changed
+
+- `isEmptyObj` now also sees objects like `{ a: undefined }` and `{ b: null }` as empty, but not falsy values like `false`, `0` or `''`
+
 ## [1.4.2] 06-10-2025
 
 ### Fix

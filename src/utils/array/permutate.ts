@@ -1,7 +1,5 @@
-import type { TypedArray } from 'typestar'
+import type { Arr } from 'typestar'
 import arrContainsDeep from './arrContainsDeep'
-
-type AnyArray<T> = T[] | TypedArray
 
 /**
  * Generates all possible permutations of a given array using Heap's algorithm.
@@ -16,14 +14,14 @@ type AnyArray<T> = T[] | TypedArray
  * - If the input array has duplicate elements, permutations will reflect those duplicates,
  *   but the total count will be reduced accordingly (e.g., [1, 1] yields [[1, 1]]).
  */
-export default function permutate<T>(arr: AnyArray<T>): AnyArray<T>[] {
+export default function permutate<T>(arr: Arr<T>): Arr<T>[] {
   const len = arr.length
-  const perms: AnyArray<T>[] = [arr.slice()]
-  const cache = new Array(len).fill(0)
+  const perms: Arr<T>[] = [arr.slice()]
+  const cache = new Uint32Array(len)
   let i = 1,
     k: number,
     p,
-    perm: AnyArray<T>
+    perm: Arr<T>
 
   while (i < len) {
     if (cache[i] < i) {

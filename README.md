@@ -15,19 +15,15 @@
 
 Bundle too big? Way too much code to write? Don't stress! Take a compresso!
 
-Compresso is a quick, zero-dependency utility library with micro-optimized utilities to reduce duplicated, long code while ensuring type security.
+Compresso is a quick utility library with micro-optimized utilities to reduce duplicated patterns of code while ensuring type security.
 
-```powershell
-    pnpm i compresso
-```
+### List of utilities can be found [here](https://github.com/Torathion/compresso/blob/master/docs/utils.md)
 
-And then only import what you need as `compresso` is tree-shakable!
+## Aliases
 
-## Motivation
+`compresso` has a vast amount of global aliases. Instead of writing `Math.max`, `Array.isArray` or `Object.getOwnPropertyDescriptor`, you can simply import the aliases like `max`, `isArray` or`getPropDescriptor`. This was done because Bundlers performing [name-mangling](https://en.wikipedia.org/wiki/Name_mangling) can't mangle and shorten the names of property values, leaving `Math.max` like they are. Modern bundlers might be able to automatically alias them, but `compresso` providing aliases itself can also ease developing larger algorithms.
 
-Bundler can not optimize and minify everything. While the concept of [name-mangling](https://en.wikipedia.org/wiki/Name_mangling) exists, it's not very well used in [`esbuild`](https://esbuild.github.io/)-based bundlers like [`vite`](https://vite.dev/) when it comes to object properties. Built-Ins like `Number`, `Math`, `Object`, `Array` and more can't be minified at all. But with compresso, it can quickly turn code like `Object.getOwnPropertyDescriptors` that can't be minified into `getPropDescriptor` that be minified to just `g()`.
-
-Beware that the bundle can only be reduced by heavy use of those built-ins. This is most likely the case in very large projects. `compresso` always comes with an overhead of 100 - 200 bytes for just the built-in compressions.
+### List of aliases can be found [here](https://github.com/Torathion/compresso/blob/master/src/constants.ts)
 
 ---
-@ 2025 Torathion
+@ 2026 Torathion

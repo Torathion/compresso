@@ -1,17 +1,4 @@
-import {
-  AnyArray,
-  Obj,
-  AnyFn,
-  AnyNumberArray,
-  AsyncFn,
-  ClassConstructor,
-  Stringifyable,
-  MaybeArray,
-  Table,
-  WithReadonly,
-  Primitive,
-  ArrayToIntersect
-} from 'typestar'
+import { Arr, Obj, Fn, NumArray, AsyncFn, ClassConstructor, Stringifyable, MaybeArray, Table, WithReadonly, Primitive, Intersect } from 'typestar'
 
 declare module 'compresso' {
   /**
@@ -377,13 +364,13 @@ declare module 'compresso' {
    * @param obj - the target object
    * @returns An array of all property names of the object.
    */
-  export const keysOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => string[];
+  export const keysOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => string[]
   /**
    * Returns an array of a given object's own enumerable property values.
    * @param obj - the target object
    * @returns An array containing the given object's own enumerable property values.
    */
-  export const valuesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => T[];
+  export const valuesOf: <T>(obj: { [s: string]: T } | ArrayLike<T>) => T[]
   /**
    * Determines whether an object has a property with the specified name as its own property.
    * @param obj - the target object
@@ -439,14 +426,14 @@ declare module 'compresso' {
    */
   export function deepEqualsObj(o1: Obj, o2: Obj): boolean
   /**
-  *  Deeply merges multiple objects into a new one.
-  *  Nested objects are recursively merged, while non-object values overwrite existing keys.
-  *  Non-object sources are skipped.
-  *
-  *  @param sources - The source objects to merge.
-  *  @returns A new object containing the merged properties.
-  */
-  export function deepMergeObj<T extends object[]>(...sources: T): ArrayToIntersect<T>
+   *  Deeply merges multiple objects into a new one.
+   *  Nested objects are recursively merged, while non-object values overwrite existing keys.
+   *  Non-object sources are skipped.
+   *
+   *  @param sources - The source objects to merge.
+   *  @returns A new object containing the merged properties.
+   */
+  export function deepMergeObj<T extends object[]>(...sources: T): Intersect<T>
   /**
    *  Deletes a specified property from an object.
    *
@@ -463,13 +450,87 @@ declare module 'compresso' {
    */
   export function equalsObj(o1: Obj, o2: Obj): boolean
   /**
-  *  Merges two or more objects into one, overwriting duplicating keys depending on the order of the passed arguments (left to right).
-  *  This function creates a new object instance on merge.
-  *
-  *  @param sources - all target objects to merge.
-  *  @returns the merged object.
-  */
-  export function mergeObj<T extends object[]>(...sources: T): ArrayToIntersect<T>
+   *  Extracts a property from a given object and deletes said property from it.
+   *
+   * @param obj - target object to extract from
+   * @param key - property key of the property to extract.
+   * @returns
+   */
+  export function extractProp<T, U extends Table<T>>(obj: U, key: keyof U): T | undefined
+  /**
+   *  Searches an array of objects for the first object where a nested property (specified by a dot-separated key path)
+   *  matches the given value.
+   *
+   *  @template T - The type of objects in the source array
+   *  @param source - The array of objects to search.
+   *  @param key - The property key, which may include dot-separated segments for nested access.
+   *  @param value - The value to match against the nested property.
+   *  @returns The first matching object from the array, or `undefined` if none found.
+   *  @example
+   *  const users = [
+   *    { id: 1, profile: { name: 'Alice' } },
+   *    { id: 2, profile: { name: 'Bob' } }
+   *  ];
+   *  findByNested(users, 'profile.name', 'Alice'); // Returns { id: 1, profile: { name: 'Alice' } }
+   */
+  export function findByNested<T extends Obj>(source: T[], key: string, value: unknown): T | undefined
+  /**
+   *  Retrieves the value of a nested property from an object, specified by a dot-separated key path.
+   *
+   *  @template T - The expected return type of the nested value.
+   *  @param source - The source object to access.
+   *  @param key - The property key, which may include dot-separated segments for nested access.
+   *  @returns The value at the nested path, or `undefined` if not found.
+   *  @example
+   *  const user = { id: 1, profile: { name: 'Alice', address: { city: 'Berlin' } } };
+   *  getNested<string>(user, 'profile.address.city'); // Returns 'Berlin'
+   *  getNested(user, 'invalid.path'); // Returns undefined
+   */
+  export function getNested<T>(source: Obj, key: string): T | undefined
+  /**
+   *  Merges two or more objects into one, overwriting duplicating keys depending on the order of the passed arguments (left to right).
+   *  This function creates a new object instance on merge.
+   *
+   *  @param sources - all target objects to merge.
+   *  @returns the merged object.
+   */
+  export function mergeObj<T extends object[]>(...sources: T): Intersect<T>
+  /**
+   *  Determines the most common value of a given property name in an array of objects.
+   *
+   *  @param arr - target array of objects.
+   *  @param prop - the property name to evaluate.
+   *  @returns the most common value of the given property name.
+   */
+  export function mostCommon<T extends Obj>(arr: T[], prop: keyof T): T[keyof T] | undefined
+  /**
+   *  Generates a diff object between two same-shaped objects to only use a partial structure with only the changed values.
+   *  Intended to be used for update requests in databases, therefore it has a third optional argument to preserve property names
+   *  for nested objects identification.
+   *
+   *  @param before - object before the update.
+   *  @param after - object after the update.
+   *  @param opts - keys to preserve and keep in the update object. (optional)
+   *  @returns the update object with only the updated (and preserved) property values.
+   */
+  export function objDiff<T>(before: T, after: T, preserved?: (string | number)[]): any
+  /**
+   *  Counts all occurrences of all property values of a given property name in an array of objects.
+   *
+   * @param arr - target array of objects.
+   * @param prop - the target property name
+   * @returns all occurrences of each value in a map.
+   */
+  export function occurrences<T extends Obj>(arr: T[], prop: keyof T): Map<T[keyof T], number>
+  /**
+   *  Finds the most common values of a property name in an array of objects.
+   *  Key difference towards `mostCommon` is that it returns an array of all values that have a tied most common occurrence.
+   *
+   *  @param arr - target array of objects.
+   *  @param prop - target property to evaluate.
+   *  @returns all values with the most common occurrence.
+   */
+  export function tiedMostCommon<T extends Obj>(arr: T[], prop: keyof T): T[keyof T][]
   /**
    *  Converts a value to its object string representation.
    *
@@ -491,7 +552,7 @@ declare module 'compresso' {
    * @param func - The function to check
    * @returns `true` if the function is an async function, otherwise `false`
    */
-  export function isAsync(func: AnyFn): func is AsyncFn
+  export function isAsync(func: Fn): func is AsyncFn
   /**
    *  Checks if a value is an async iterable.
    *
@@ -549,6 +610,13 @@ declare module 'compresso' {
    */
   export function isEmptyObj(obj?: Obj): boolean
   /**
+   * Checks if an object is empty (has no enumerable own properties).
+   *
+   * @param obj - The object to check for emptiness.
+   * @returns `true` if the object is empty or not a valid object (e.g., null or undefined), `false` otherwise.
+   */
+  export function isDeepEmptyObj(obj: Obj): boolean
+  /**
    * Checks if a value is an `Error`.
    *
    *  @param value - The value to check.
@@ -561,7 +629,7 @@ declare module 'compresso' {
    *  @param value - The value to check.
    *  @returns `true` if the value is a function, otherwise `false`.
    */
-  export function isFunction(value: unknown): value is AnyFn
+  export function isFunction(value: unknown): value is Fn
   /**
    *  Checks if a function is a generator function.
    *
@@ -638,14 +706,14 @@ declare module 'compresso' {
    *  @param arr2 - The second array to compare.
    *  @returns `true` if the arrays are strictly equal, otherwise `false`.
    */
-  export function arrEquals<T>(arr1: WithReadonly<AnyArray<T>>, arr2: AnyArray<T>): boolean
+  export function arrEquals<T>(arr1: WithReadonly<Arr<T>>, arr2: Arr<T>): boolean
   /**
    * Guard function to check if every element of the given array is unique.
    *
    * @param arr - target array.
    * @returns `true`, if the array only has unique elements, otherwise `false`.
    */
-  export function arrIsUnique<T>(arr: WithReadonly<AnyArray<T>>): boolean
+  export function arrIsUnique<T>(arr: WithReadonly<Arr<T>>): boolean
   /**
    *	Checks if a value is within a range inside the given array of sorted range pairs.
    *
@@ -660,7 +728,7 @@ declare module 'compresso' {
    * @param value - the value to check for each range
    * @returns whether the value can be assigned to a range pair or not.
    */
-  export function arrRangesIncludes(arr: WithReadonly<AnyNumberArray>, value: number): boolean
+  export function arrRangesIncludes(arr: WithReadonly<NumArray>, value: number): boolean
   /**
    *	Finds the index of the range pair the target number is in.
    *  The index is interpreted as the index of the minimum value of the range divided by 2 (and truncated if odd index).
@@ -676,7 +744,7 @@ declare module 'compresso' {
    * @param value - the value to check for each range
    * @returns the interpreted index of the pair
    */
-  export function arrRangesIndexOf(arr: WithReadonly<AnyNumberArray>, value: number): number
+  export function arrRangesIndexOf(arr: WithReadonly<NumArray>, value: number): number
   /**
    *  Removes a given element from a given array.
    *
@@ -709,7 +777,7 @@ declare module 'compresso' {
    * @param arr2 - second possible nested array.
    * @returns
    */
-  export function deepArrEquals(arr1: MaybeArray<AnyArray<unknown>>, arr2: unknown[]): boolean
+  export function deepArrEquals(arr1: MaybeArray<Arr<unknown>>, arr2: unknown[]): boolean
   /**
    *  Ensures the given value is always returned as an array.
    *
@@ -736,7 +804,7 @@ declare module 'compresso' {
    * @remarks
    * - Does not create a new array; modifies `target` directly.
    */
-  export function mergeArr<T, U>(target: WithReadonly<AnyArray<T>>, source: WithReadonly<AnyArray<U>>): void
+  export function mergeArr<T, U>(target: WithReadonly<Arr<T>>, source: WithReadonly<Arr<U>>): void
   /**
    * Generates all possible permutations of a given array using Heap's algorithm.
    * The function returns an array of arrays, where each sub-array is a unique
@@ -750,7 +818,7 @@ declare module 'compresso' {
    * - If the input array has duplicate elements, permutations will reflect those duplicates,
    *   but the total count will be reduced accordingly (e.g., [1, 1] yields [[1, 1]]).
    */
-  export function permutate<T>(arr: AnyArray<T>): AnyArray<T>[]
+  export function permutate<T>(arr: Arr<T>): Arr<T>[]
   /**
    *  Shuffles an array in place using the Fisher-Yates (Knuth) shuffle algorithm
    *  and returns the shuffled array.
@@ -758,7 +826,7 @@ declare module 'compresso' {
    *  @param arr - The input array to be shuffled
    *  @returns The shuffled array (same reference as input)
    */
-  export function shuffle<T>(arr: AnyArray<T>): AnyArray<T>
+  export function shuffle<T>(arr: Arr<T>): Arr<T>
   /**
    *	Binary searches an index inside a sorted array.
    *
@@ -794,7 +862,7 @@ declare module 'compresso' {
    *  @param arr - The input array from which to remove duplicates.
    *  @returns A new array containing only unique elements from the input array, in the order of their first appearance.
    */
-  export function unique<T extends AnyArray<Primitive>>(arr: T): T
+  export function unique<T extends Arr<Primitive>>(arr: T): T
   /**
    * Merges two arrays and removes duplicates, returning a new array with unique elements.
    *
@@ -813,7 +881,7 @@ declare module 'compresso' {
    *  @returns rhe bound function.
    *  @throws if the property at the specified key is not a function.
    */
-  export function bindSelf<T extends Obj>(context: T, key: keyof T): AnyFn
+  export function bindSelf<T extends Obj>(context: T, key: keyof T): Fn
   /**
    *  A no-operation function that performs no action and returns undefined.
    *
@@ -854,11 +922,11 @@ declare module 'compresso' {
    *  Subsequent calls return the cached result without re-executing the original function.
    *  The wrapped function includes `called` and `value` properties to track its state.
    *
-   *  @template T - The type of the function to wrap, extending AnyFn.
+   *  @template T - The type of the function to wrap, extending Fn.
    *  @param fn - The function to execute only once.
    *  @returns A wrapped function that runs once and caches its result.
    */
-  export function once<T extends AnyFn>(fn: T): OnceFunction<T>
+  export function once<T extends Fn>(fn: T): OnceFunction<T>
   /**
    * Creates an async function that executes only once and caches its result.
    *
@@ -866,18 +934,18 @@ declare module 'compresso' {
    * Subsequent calls return the cached result without re-executing the original function.
    * The wrapped function includes `called` and `value` properties to track its state.
    *
-   * @template T - The type of the async function to wrap, extending AnyFn.
+   * @template T - The type of the async function to wrap, extending Fn.
    * @param fn - The async function to execute only once.
    * @returns A wrapped async function that runs once and caches its result.
    */
-  export function onceAsync<T extends AnyFn>(fn: T): AsyncOnceFunction<T>
+  export function onceAsync<T extends Fn>(fn: T): AsyncOnceFunction<T>
   /**
    *  Wraps a function to make it "safe" by catching any errors and returning silently without issues.
    *
    *  @param fn - The function to make safe
    *  @returns A wrapped function that returns either the original result or undefined.
    */
-  export function safe<T extends AnyFn>(fn: T): SafeFunction<T>
+  export function safe<T extends Fn>(fn: T): SafeFunction<T>
   /**
    * Wraps an async function to safely handle errors by returning a Promise that
    * resolves to either the function's result or `undefined` if an error occurs.
@@ -886,7 +954,7 @@ declare module 'compresso' {
    * @param f - The async function to wrap
    * @returns A wrapped async function that never throws.
    */
-  export function safeAsync<T extends AsyncFunction>(f: T): AsyncSafeFunction<T>
+  export function safeAsync<T extends AsyncFn>(f: T): AsyncSafeFunction<T>
   /**
    *  Wraps a class constructor to safely create instances, returning `undefined`
    *  instead of throwing an error if construction fails.

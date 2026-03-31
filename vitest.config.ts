@@ -1,7 +1,8 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vitest/config'
 
 if (process.env.TEST_WATCH) {
-  // Patch stdin on the process so that we can fake it to seem like a real interactive terminal and pass the TTY checks
+  // Keep your stdin patch if it's still necessary for your watch setup
   process.stdin.isTTY = true
   process.stdin.setRawMode = () => process.stdin
 }
@@ -9,11 +10,16 @@ if (process.env.TEST_WATCH) {
 const isCI = process.env.CI === 'true'
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      src: resolve(__dirname, './src')
+    }
+  },
   test: {
     coverage: {
       enabled: true,
-      all: true,
       provider: 'v8',
+      include: ['src/**'], // Recommended: be explicit
       exclude: [
         '**/*.js',
         '**/*.[cm]js',
@@ -22,18 +28,19 @@ export default defineConfig({
         '**/index.ts',
         '**/constants.ts',
         'src/internal/**',
-        '**/*.test.ts',
-        '**/*.spec.ts',
         '**/*.config.ts',
         'test/test-utils.ts'
       ],
-      reporter: ['text', 'text-summary', 'json', 'json-summary', 'html']
+      reporter: ['text', 'text-summary', 'json', 'json-summary', 'html'],
+      reportsDirectory: './coverage',
+      reportOnFailure: true,
+      thresholds: { lines: 80, functions: 80, branches: 80, statements: 80 }
     },
-    reporters: isCI ? ['verbose', 'json', 'junit'] : ['default', 'hanging-process'],
-    outputFile: {
-      json: './test-results/test-results.json',
-      junit: './test-results/test-results.xml'
-    },
+
+    reporters: isCI
+      ? ['verbose', 'json', 'junit'] // or simplify to fewer in CI
+      : ['default', 'hanging-process'],
+
     silent: isCI
   }
 })

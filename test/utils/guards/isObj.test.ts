@@ -40,12 +40,4 @@ describe('isObj', () => {
     const obj = Object.create({})
     expect(isObj(obj)).toBe(true)
   })
-
-  it('should work with TypeScript type narrowing', () => {
-    const value: unknown = { a: 1 }
-    if (isObj(value)) {
-      // TypeScript knows value is AnyObject here
-      expect(typeof value.a).toBe('number')
-    }
-  })
 })

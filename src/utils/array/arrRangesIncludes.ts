@@ -1,4 +1,4 @@
-import type { AnyNumberArray, WithReadonly } from 'typestar'
+import type { NumArray, WithReadonly } from 'typestar'
 
 /**
  *	Checks if a value is within a range inside the given array of sorted range pairs.
@@ -14,7 +14,7 @@ import type { AnyNumberArray, WithReadonly } from 'typestar'
  * @param value - the value to check for each range
  * @returns whether the value can be assigned to a range pair or not.
  */
-export default function arrRangesIncludes(arr: WithReadonly<AnyNumberArray>, value: number): boolean {
+export default function arrRangesIncludes(arr: WithReadonly<NumArray>, value: number): boolean {
   let max = arr.length - 1
   if (!max || (max + 1) & 1 || value < arr[0] || value > arr[max]) return false
   let min = 0

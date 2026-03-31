@@ -9,5 +9,5 @@ import type { WithReadonly } from 'typestar'
  */
 export default function last<T>(arr: WithReadonly<T[]>, fallback?: T): T | undefined {
   const len = arr.length
-  return len > 0 ? arr.at(-1) : fallback
+  return len > 0 ? arr[len - 1] : fallback
 }

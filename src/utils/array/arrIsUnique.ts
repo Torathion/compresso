@@ -1,4 +1,4 @@
-import type { AnyArray, WithReadonly } from 'typestar'
+import type { Arr, WithReadonly } from 'typestar'
 
 /**
  * Guard function to check if every element of the given array is unique.
@@ -6,7 +6,7 @@ import type { AnyArray, WithReadonly } from 'typestar'
  * @param arr - target array.
  * @returns `true`, if the array only has unique elements, otherwise `false`.
  */
-export default function arrIsUnique<T>(arr: WithReadonly<AnyArray<T>>): boolean {
+export default function arrIsUnique<T>(arr: WithReadonly<Arr<T>>): boolean {
   if (!arr.length) return false
   const set = new Set()
   let item

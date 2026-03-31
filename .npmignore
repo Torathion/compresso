@@ -1,6 +1,6 @@
 *
-!dist/*.js
-!dist/*.mjs
+!dist/index.cjs
+!dist/index.mjs
 !package.json
 !README.md
 !LICENSE.md

@@ -1,5 +1,3 @@
-import { arrFrom } from 'src/constants'
-
 /**
  * Merges two arrays and removes duplicates, returning a new array with unique elements.
  *
@@ -9,7 +7,7 @@ import { arrFrom } from 'src/constants'
  * @returns A new array containing unique elements from both input arrays, in the order of their first appearance.
  */
 export default function uniqueMerge<T extends unknown[]>(arr1: T, arr2?: T): T {
-    let arr = arr1.slice()
-    if (arr2) arr = arr.concat(arr2)
-    return arrFrom(new Set(arr)) as T
+  let arr = arr1.slice()
+  if (arr2) arr = arr.concat(arr2)
+  return [...new Set(arr)] as T
 }
