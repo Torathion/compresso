@@ -13,7 +13,7 @@ import { refMergeObj } from 'src/constants'
 export default function safeAsync<T extends AsyncFn>(f: T): AsyncSafeFunction<T> {
   const fn = async (...args: Parameters<T>): Promise<undefined | ReturnType<T>> => {
     try {
-      return (await f(...args)) as any
+      return await f(...args)
     } catch {}
   }
   refMergeObj(fn, f)

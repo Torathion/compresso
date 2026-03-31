@@ -17,7 +17,7 @@ export default function isDeepEmptyObj(obj: Obj): boolean {
       if (!isDeepEmptyObj(prop)) return false
     } else if (isArray(prop)) {
       if (!isDeepEmptyObj(prop)) return false
-    } else if (prop != null) return false
+    } else if (prop != undefined) return false
   }
   /* eslint-enable  guard-for-in */
   return true

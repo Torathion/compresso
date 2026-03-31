@@ -10,7 +10,7 @@ import { isObj } from '../guards'
  *  @param sources - The source objects to merge.
  *  @returns A new object containing the merged properties.
  */
-export function deepMergeObj<T extends Obj[]>(...sources: T): Intersect<T> {
+export default function deepMergeObj<T extends Obj[]>(...sources: T): Intersect<T> {
   const target: Table<unknown> = {}
 
   for (const source of sources) {

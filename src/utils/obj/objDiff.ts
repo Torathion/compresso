@@ -1,9 +1,9 @@
-import { hasProp } from 'src/constants'
 import type { Obj } from 'typestar'
+import { hasProp } from 'src/constants'
 import isEmptyObj from '../guards/isEmptyObj'
 import isObj from '../guards/isObj'
 
-const isObject = (o: unknown): o is object => o != null && typeof o === 'object'
+const isObject = (o: unknown): o is object => o != undefined && typeof o === 'object'
 
 /**
  *  Generates a diff object between two same-shaped objects to only use a partial structure with only the changed values.

@@ -1,4 +1,4 @@
-import type { Fn, AsyncFn } from 'typestar'
+import type { AsyncFn, Fn } from 'typestar'
 
 /**
  * Checks if a given function is an async function.

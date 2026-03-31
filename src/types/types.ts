@@ -1,4 +1,4 @@
-import type { Fn, AsyncFn } from 'typestar'
+import type { AsyncFn, Fn } from 'typestar'
 
 export type AsyncOnceFunction<T extends Fn> = {
   (...args: Parameters<T>): Promise<ReturnType<T>>

@@ -8,8 +8,8 @@ import type { Obj } from 'typestar'
  */
 export default function isEmptyObj(obj?: Obj): boolean {
   if (!obj) return true
-  /* eslint-disable  guard-for-in */
-  for (const x in obj) if (obj[x] != null) return false
-  /* eslint-enable  guard-for-in */
+
+  for (const x in obj) if (obj[x] != undefined) return false
+
   return true
 }
