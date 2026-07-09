@@ -15,7 +15,7 @@ describe('toAsyncIterable', () => {
     expect(results).toEqual([1, 2, 3])
   })
 
-  it('should handle empty array of promises', async () => {
+  it('handles empty array of promises', async () => {
     const promises: Promise<number>[] = []
     const asyncIterable = toAsyncIterable(promises)
     const results: number[] = []
@@ -43,7 +43,7 @@ describe('toAsyncIterable', () => {
     expect(results).toEqual([1, 2, 3])
   })
 
-  it('should handle rejected promises', async () => {
+  it('handles rejected promises', async () => {
     const promises = [Promise.resolve(1), Promise.reject(new Error('Test error')), Promise.resolve(3)]
     const asyncIterable = toAsyncIterable(promises)
 

@@ -14,7 +14,7 @@ describe('onceAsync', () => {
     expect(result2).toBe(42)
   })
 
-  it('should handle async functions that return different results', async () => {
+  it('handles async functions that return different results', async () => {
     let counter = 0
     const mockAsyncFn = vi.fn(async () => {
       counter++

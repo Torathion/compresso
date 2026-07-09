@@ -39,14 +39,14 @@ describe('safeConstruct', () => {
     expect(instance?.value).toBe(42)
   })
 
-  it('should return undefined when construction throws', () => {
+  it('returns undefined when construction throws', () => {
     const SafeThrowingClass = safeConstruct(ThrowingClass)
     const instance = SafeThrowingClass(-1)
 
     expect(instance).toBeUndefined()
   })
 
-  it('should handle multiple constructor arguments', () => {
+  it('handles multiple constructor arguments', () => {
     const SafeMultipleArgsClass = safeConstruct(MultipleArgsClass)
     const instance = SafeMultipleArgsClass(42, 'test', true)
 
@@ -56,7 +56,7 @@ describe('safeConstruct', () => {
     expect(instance?.c).toBe(true)
   })
 
-  it('should handle constructors with no arguments', () => {
+  it('handles constructors with no arguments', () => {
     const SafeNoArgsClass = safeConstruct(NoArgsClass)
     const instance = SafeNoArgsClass()
 
@@ -64,7 +64,7 @@ describe('safeConstruct', () => {
     expect(NoArgsClass.instanceCount).toBe(1)
   })
 
-  it('should handle different types of errors', () => {
+  it('handles different types of errors', () => {
     const errors = [new Error('Standard error'), new TypeError('Type error'), 'string error', 123]
 
     for (const error of errors) {
@@ -87,7 +87,7 @@ describe('safeConstruct', () => {
     expect(instance instanceof Object).toBe(true)
   })
 
-  it('should handle classes with methods', () => {
+  it('handles classes with methods', () => {
     class MethodClass {
       constructor(private value: number) {}
       getValue() {
@@ -101,7 +101,7 @@ describe('safeConstruct', () => {
     expect(instance?.getValue()).toBe(42)
   })
 
-  it('should handle classes with static properties', () => {
+  it('handles classes with static properties', () => {
     class StaticClass {
       static counter = 0
       constructor() {
@@ -118,7 +118,7 @@ describe('safeConstruct', () => {
     expect(StaticClass.counter).toBe(2)
   })
 
-  it('should handle inheritance', () => {
+  it('handles inheritance', () => {
     class BaseClass {
       constructor(public baseValue: string) {}
     }
@@ -140,7 +140,7 @@ describe('safeConstruct', () => {
     expect(instance?.derivedValue).toBe(42)
   })
 
-  it('should handle throwing inherited constructors', () => {
+  it('handles throwing inherited constructors', () => {
     class BaseClass {
       constructor(value: number) {
         if (value < 0) throw new Error('Negative value')

@@ -2,34 +2,34 @@ import { isGenerator } from 'src'
 import { describe, it, expect } from 'vitest'
 
 describe('isGenerator', () => {
-  it('should return true for a generator function', () => {
+  it('returns true for a generator function', () => {
     function* generatorFunc() {
       yield 42
     }
     expect(isGenerator(generatorFunc)).toBe(true)
   })
 
-  it('should return false for a regular function', () => {
+  it('returns false for a regular function', () => {
     function regularFunc() {}
     expect(isGenerator(regularFunc)).toBe(false)
   })
 
-  it('should return false for an arrow function', () => {
+  it('returns false for an arrow function', () => {
     const arrowFunc = () => {}
     expect(isGenerator(arrowFunc)).toBe(false)
   })
 
-  it('should return false for an async function', () => {
+  it('returns false for an async function', () => {
     const asyncFunc = async () => {}
     expect(isGenerator(asyncFunc)).toBe(false)
   })
 
-  it('should return false for a class constructor', () => {
+  it('returns false for a class constructor', () => {
     class TestClass {}
     expect(isGenerator(TestClass)).toBe(false)
   })
 
-  it('should return false for non-function values', () => {
+  it('returns false for non-function values', () => {
     expect(isGenerator(42)).toBe(false)
     expect(isGenerator('not a function')).toBe(false)
     expect(isGenerator(null)).toBe(false)

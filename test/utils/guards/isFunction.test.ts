@@ -2,35 +2,35 @@ import { isFunction } from 'src'
 import { describe, it, expect } from 'vitest'
 
 describe('isFunction', () => {
-  it('should return true for arrow functions', () => {
+  it('returns true for arrow functions', () => {
     expect(isFunction(() => {})).toBe(true)
     expect(isFunction((a: number) => a + 1)).toBe(true)
   })
 
-  it('should return true for traditional functions', () => {
+  it('returns true for traditional functions', () => {
     expect(isFunction(function () {})).toBe(true)
     expect(isFunction(function namedFunc() {})).toBe(true)
   })
 
-  it('should return true for async functions', () => {
+  it('returns true for async functions', () => {
     expect(isFunction(async () => {})).toBe(true)
     expect(isFunction(async function () {})).toBe(true)
   })
 
-  it('should return true for bound functions', () => {
+  it('returns true for bound functions', () => {
     const func = function () {}
     const boundFunc = func.bind(null)
     expect(isFunction(boundFunc)).toBe(true)
   })
 
-  it('should return true for methods in objects', () => {
+  it('returns true for methods in objects', () => {
     const obj = {
       method() {}
     }
     expect(isFunction(obj.method)).toBe(true)
   })
 
-  it('should return false for non-function values', () => {
+  it('returns false for non-function values', () => {
     expect(isFunction(undefined)).toBe(false)
     expect(isFunction(null)).toBe(false)
     expect(isFunction(42)).toBe(false)
@@ -42,7 +42,7 @@ describe('isFunction', () => {
     expect(isFunction(Symbol('test'))).toBe(false)
   })
 
-  it('should return true for built-in functions', () => {
+  it('returns true for built-in functions', () => {
     expect(isFunction(Math.sin)).toBe(true)
     expect(isFunction(Object.create)).toBe(true)
   })

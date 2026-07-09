@@ -24,13 +24,13 @@ describe('shuffle', () => {
     })
   })
 
-  it('should handle empty array', () => {
+  it('handles empty array', () => {
     const arr: number[] = []
     shuffle(arr)
     expect(arr).toEqual([])
   })
 
-  it('should handle single element', () => {
+  it('handles single element', () => {
     const arr = ['a']
     shuffle(arr)
     expect(arr).toEqual(['a'])
@@ -61,7 +61,7 @@ describe('shuffle', () => {
     expect(result).toEqual([3, 1, 4, 2, 5])
   })
 
-  it('should return the same array reference', () => {
+  it('returns the same array reference', () => {
     const arr = [1, 2, 3]
     const result = shuffle(arr)
     expect(result).toBe(arr)

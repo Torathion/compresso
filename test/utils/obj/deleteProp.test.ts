@@ -9,7 +9,7 @@ describe('deleteProp', () => {
     expect('a' in obj).toBe(false)
   })
 
-  it('should handle deleting a non-existent property', () => {
+  it('handles deleting a non-existent property', () => {
     const obj = { x: 10 }
     // @ts-ignore - testing with invalid key for robustness
     deleteProp(obj, 'y')

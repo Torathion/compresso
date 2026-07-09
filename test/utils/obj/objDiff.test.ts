@@ -70,10 +70,10 @@ describe('objDiff', () => {
     expect(objDiff(obj, obj, ['token'])).toEqual({})
   })
 
-  it('handles primitives and null/undefined correctly', () => {
+  it('handles primitives and undefined correctly', () => {
     expect(objDiff(42, 99)).toBe(99)
-    expect(objDiff(null, { a: 1 })).toEqual({ a: 1 })
-    expect(objDiff({ a: 1 }, null)).toBe(null)
+    expect(objDiff(undefined, { a: 1 })).toEqual({ a: 1 })
+    expect(objDiff({ a: 1 }, undefined)).toBe(undefined)
     expect(objDiff({ a: undefined }, { a: 5 })).toEqual({ a: 5 })
   })
 

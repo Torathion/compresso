@@ -1,13 +1,14 @@
 import { isDeepEmptyObj } from 'src'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('isEmptyObj', () => {
-  it('should return true for an empty object', () => {
+  it('returns true for an empty object', () => {
+    expect(isDeepEmptyObj(undefined)).toBe(true)
     expect(isDeepEmptyObj({})).toBe(true)
     expect(isDeepEmptyObj({ a: 1 })).toBe(false)
   })
 
-  it('should return true for an object with only empty props', () => {
+  it('returns true for an object with only empty props', () => {
     expect(isDeepEmptyObj({ a: null })).toBe(true)
     expect(isDeepEmptyObj({ a: undefined })).toBe(true)
 
@@ -16,7 +17,7 @@ describe('isEmptyObj', () => {
     expect(isDeepEmptyObj({ a: false })).toBe(false)
   })
 
-  it('should return true for deeply empty objects', () => {
+  it('returns true for deeply empty objects', () => {
     expect(isDeepEmptyObj({ a: {} })).toBe(true)
     expect(isDeepEmptyObj({ a: [] })).toBe(true)
 

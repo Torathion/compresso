@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { safeAsync } from 'src'
 
 describe('safeAsync', () => {
-  it('should return result for successful async function', async () => {
+  it('returns result for successful async function', async () => {
     const asyncFn = async (x: number) => x * 2
     const safeFn = safeAsync(asyncFn)
 
@@ -31,7 +31,7 @@ describe('safeAsync', () => {
     expect((safeFn as any).customMethod()).toBe('method')
   })
 
-  it('should handle async functions with multiple await expressions', async () => {
+  it('handles async functions with multiple await expressions', async () => {
     const asyncFn = async (x: number) => {
       await Promise.resolve()
       const intermediate = x * 2
@@ -44,7 +44,7 @@ describe('safeAsync', () => {
     expect(result).toBe(11)
   })
 
-  it('should handle different types of errors', async () => {
+  it('handles different types of errors', async () => {
     const errors = [new Error('Standard error'), new TypeError('Type error'), 'string error', null, undefined, 123]
 
     for (const error of errors) {
@@ -58,7 +58,7 @@ describe('safeAsync', () => {
     }
   })
 
-  it('should handle void async functions', async () => {
+  it('handles void async functions', async () => {
     const asyncFn = async () => {}
     const safeFn = safeAsync(asyncFn)
 
@@ -66,7 +66,7 @@ describe('safeAsync', () => {
     expect(result).toBeUndefined()
   })
 
-  it('should handle Promise rejection', async () => {
+  it('handles Promise rejection', async () => {
     const asyncFn = async () => Promise.reject(new Error('Rejected'))
     const safeFn = safeAsync(asyncFn)
 
