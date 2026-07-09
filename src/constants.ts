@@ -1,5 +1,4 @@
 export const { parse: parseJson, stringify } = JSON
-export const { freeze, isExtensible, isFrozen, isSealed, preventExtensions, seal } = Object
 export const {
   abs,
   acos,
@@ -49,10 +48,17 @@ export const {
   assign: refMergeObj,
   defineProperty: defineProp,
   entries: entriesOf,
+  freeze,
   getOwnPropertyDescriptor: getPropDescriptor,
   getPrototypeOf: getProto,
   hasOwn: hasProp,
+  is: eq,
+  isExtensible,
+  isFrozen,
+  isSealed,
   keys: keysOf,
+  preventExtensions,
+  seal,
   setPrototypeOf: setProto,
   values: valuesOf
 } = Object

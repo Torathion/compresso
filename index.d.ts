@@ -379,6 +379,14 @@ declare module 'compresso' {
    */
   export const hasProp: (obj: any, prop: PropertyKey) => boolean
   /**
+   *  Validates two values to be the [same value](https://262.ecma-international.org/7.0/#sec-samevalue).
+   *
+   *  @param value1 - the first value
+   *  @param value2 - the second value
+   *  @returns `true` if both values are the same value, otherwise `false`.
+   */
+  export const eq: (value1: any, value2: any) => boolean
+  /**
    * Returns a string created from the specified sequence of UTF-16 code units.
    * @param codePoints One or more UTF-16 code units.
    * @returns A string consisting of the specified code units.
