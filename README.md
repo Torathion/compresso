@@ -15,7 +15,7 @@
 
 Bundle too big? Way too much code to write? Don't stress! Take a compresso!
 
-Compresso is a quick utility library with micro-optimized utilities to reduce duplicated patterns of code while ensuring type security.
+Compresso is a quick utility library with micro-optimized utilities to reduce duplicated patterns of code while ensuring type security. Though, the utilities themselves do not throw any errors or strictly confirm param types. They are intentionally "dumb" and "primitive" to be as performed as possible.
 
 ### List of utilities can be found [here](https://github.com/Torathion/compresso/blob/master/docs/utils.md)
 
