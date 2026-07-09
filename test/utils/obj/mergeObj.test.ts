@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mergeObj } from 'src'
 
 describe('mergeObj', () => {
-  it('should return an empty object when no sources are provided', () => {
+  it('returns an empty object when no sources are provided', () => {
     const result = mergeObj()
     expect(result).toEqual({})
     expect(result).toBeInstanceOf(Object)
@@ -43,7 +43,7 @@ describe('mergeObj', () => {
     expect(source2).toEqual(source2Copy)
   })
 
-  it('should handle arrays as object sources', () => {
+  it('handles arrays as object sources', () => {
     const source1 = { a: 1 }
     const source2 = ['x', 'y'] as any // Arrays are objects in JS
     const result = mergeObj(source1, source2)

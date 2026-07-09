@@ -1,5 +1,5 @@
 import { deepEqualsObj } from 'src'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('deepEqualsObj', () => {
   it('returns true for identical primitive objects', () => {
@@ -62,5 +62,17 @@ describe('deepEqualsObj', () => {
   it('handles empty objects', () => {
     expect(deepEqualsObj({}, {})).toBe(true)
     expect(deepEqualsObj({}, { a: 1 })).toBe(false)
+  })
+
+  it('catches primitive mismatches hidden behind matching nested objects (early return bug)', () => {
+    expect(deepEqualsObj({ matchObj: { a: 1 }, mismatchVal: 1 }, { matchObj: { a: 1 }, mismatchVal: 2 })).toBe(false)
+  })
+
+  it('catches primitive mismatches hidden behind matching nested arrays (early return bug)', () => {
+    expect(deepEqualsObj({ matchArr: [1, 2, 3], mismatchVal: 'correct' }, { matchArr: [1, 2, 3], mismatchVal: 'wrong' })).toBe(false)
+  })
+
+  it('catches nested object mismatches hidden behind other matching nested objects', () => {
+    expect(deepEqualsObj({ first: { a: 1 }, second: { b: 2 } }, { first: { a: 1 }, second: { b: 99 } })).toBe(false)
   })
 })

@@ -48,23 +48,25 @@
 | `canCopyProps`         | Checks if a property value can be copied from one descriptor to the other         |
 | `isAsync`              | Checks if the value is an async function                                          |
 | `isAsyncIterable`      | Checks for async iterables                                                        |
-| `isBigInt`             | Check if value is `bigint`                                                        |
-| `isBlob`               | Check if value is `Blob`                                                          |
-| `isBool`               | Check if value is `boolean`                                                       |
-| `isCustomObj`          | Check if value is not a built-in object                                           |
-| `isDeepEmptyObj`       | Check if a nested object is empty                                                 |
-| `isDefined`            | Check if value is neither `null` or `undefined`                                   |
-| `isEditable`           | Check if `PropertyDescriptor` can be edited                                       |
-| `isEmptyObj`           | Check if object is empty                                                          |
-| `isError`              | Check if object is an `Error`                                                     |
-| `isFunction`           | Check if value is a `function`                                                    |
-| `isGenerator`          | Check if value is a generator function                                            |
-| `isIterable`           | Check if object can be iterated through (Has an iterator symbol)                  |
-| `isNull`               | Check if value is null                                                            |
-| `isNumber`             | Check if value is `number`                                                        |
-| `isObj`                | Check if value is an `object` and not an equivalent (array, `null`)               |
-| `isString`             | Check if value is `string`                                                        |
-| `isSymbol`             | Check if value is `symbol`                                                        |
+| `isBigInt`             | Checks if value is `bigint`                                                       |
+| `isBlob`               | Checks if value is `Blob`                                                         |
+| `isBool`               | Checks if value is `boolean`                                                      |
+| `isCustomObj`          | Checks if value is not a built-in object                                          |
+| `isDeepEmptyObj`       | Checks if a nested object is empty                                                |
+| `isDeepFalsyObj`       | Checks if a nested object only has falsy values                                   |
+| `isDefined`            | Checks if value is neither `null` or `undefined`                                  |
+| `isEditable`           | Checks if `PropertyDescriptor` can be edited                                      |
+| `isEmptyObj`           | Checks if object is empty                                                         |
+| `isError`              | Checks if object is an `Error`                                                    |
+| `isFalsyObj`           | Checks if object only has falsy values                                            |
+| `isFunction`           | Checks if value is a `function`                                                   |
+| `isGenerator`          | Checks if value is a generator function                                           |
+| `isIterable`           | Checks if object can be iterated through (Has an iterator symbol)                 |
+| `isNull`               | Checks if value is null                                                           |
+| `isNumber`             | Checks if value is `number`                                                       |
+| `isObj`                | Checks if value is an `object` and not an equivalent (array, `null`)              |
+| `isString`             | Checks if value is `string`                                                       |
+| `isSymbol`             | Checks if value is `symbol`                                                       |
 
 ## Object
 

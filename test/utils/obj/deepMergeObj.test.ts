@@ -2,7 +2,7 @@ import { deepMergeObj } from 'src'
 import { describe, expect, it } from 'vitest'
 
 describe('deepMergeObj', () => {
-  it('should return an empty object when no sources are provided', () => {
+  it('returns an empty object when no sources are provided', () => {
     const result = deepMergeObj()
     expect(result).toEqual({})
   })
@@ -40,7 +40,7 @@ describe('deepMergeObj', () => {
     expect(result).toEqual({ a: { x: 42 } })
   })
 
-  it('should handle deeply nested objects', () => {
+  it('handles deeply nested objects', () => {
     const source1 = { a: { b: { c: 1 } } }
     const source2 = { a: { b: { d: 2 } } }
     const result = deepMergeObj(source1, source2)
@@ -57,14 +57,14 @@ describe('deepMergeObj', () => {
     expect(source2).toEqual(source2Copy)
   })
 
-  it('should handle arrays as non-object values', () => {
+  it('handles arrays as non-object values', () => {
     const source1 = { a: [1, 2] }
     const source2 = { a: [3, 4] }
     const result = deepMergeObj(source1, source2)
     expect(result).toEqual({ a: [3, 4] })
   })
 
-  it('should handle null values as non-object values', () => {
+  it('handles null values as non-object values', () => {
     const source1 = { a: { x: 1 } }
     const source2 = { a: null }
     const result = deepMergeObj(source1, source2)

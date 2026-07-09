@@ -9,14 +9,14 @@ describe('copyObj', () => {
     expect(result).not.toBe(input) // Ensure it's a new object
   })
 
-  it('should handle nested objects correctly', () => {
+  it('handles nested objects correctly', () => {
     const input = { a: 1, b: { c: 2 } }
     const result = copyObj(input)
     expect(result).toEqual(input)
     expect(result.b).toBe(input.b) // Shallow copy, nested objects are not cloned
   })
 
-  it('should handle empty objects', () => {
+  it('handles empty objects', () => {
     const input = {}
     const result = copyObj(input)
     expect(result).toEqual({})

@@ -2,35 +2,35 @@ import { equalsObj } from 'src'
 import { describe, it, expect } from 'vitest'
 
 describe('equalsObj', () => {
-  it('should return true for identical simple objects', () => {
+  it('returns true for identical simple objects', () => {
     const obj1 = { a: 1, b: 2 }
     const obj2 = { a: 1, b: 2 }
     expect(equalsObj(obj1, obj2)).toBe(true)
   })
 
-  it('should return false for objects with different values', () => {
+  it('returns false for objects with different values', () => {
     const obj1 = { a: 1, b: 2 }
     const obj2 = { a: 1, b: 3 }
     expect(equalsObj(obj1, obj2)).toBe(false)
   })
 
-  it('should return false for objects with different key counts', () => {
+  it('returns false for objects with different key counts', () => {
     const obj1 = { a: 1, b: 2 }
     const obj2 = { a: 1 }
     expect(equalsObj(obj1, obj2)).toBe(false)
   })
 
-  it('should return false for objects with different keys', () => {
+  it('returns false for objects with different keys', () => {
     const obj1 = { a: 1, b: 2 }
     const obj2 = { a: 1, c: 2 }
     expect(equalsObj(obj1, obj2)).toBe(false)
   })
 
-  it('should return true for empty objects', () => {
+  it('returns true for empty objects', () => {
     expect(equalsObj({}, {})).toBe(true)
   })
 
-  it('should handle various primitive value types', () => {
+  it('handles various primitive value types', () => {
     const obj1 = {
       num: 42,
       str: 'test',

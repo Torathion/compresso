@@ -379,6 +379,14 @@ declare module 'compresso' {
    */
   export const hasProp: (obj: any, prop: PropertyKey) => boolean
   /**
+   *  Validates two values to be the [same value](https://262.ecma-international.org/7.0/#sec-samevalue).
+   *
+   *  @param value1 - the first value
+   *  @param value2 - the second value
+   *  @returns `true` if both values are the same value, otherwise `false`.
+   */
+  export const eq: (value1: any, value2: any) => boolean
+  /**
    * Returns a string created from the specified sequence of UTF-16 code units.
    * @param codePoints One or more UTF-16 code units.
    * @returns A string consisting of the specified code units.
@@ -610,12 +618,26 @@ declare module 'compresso' {
    */
   export function isEmptyObj(obj?: Obj): boolean
   /**
-   * Checks if an object is empty (has no enumerable own properties).
+   * Checks if an object is deeply empty (has no enumerable own properties).
    *
    * @param obj - The object to check for emptiness.
    * @returns `true` if the object is empty or not a valid object (e.g., null or undefined), `false` otherwise.
    */
-  export function isDeepEmptyObj(obj: Obj): boolean
+  export function isDeepEmptyObj(obj?: Obj): boolean
+  /**
+   * Checks if an object only has falsy properties.
+   *
+   * @param obj - The object to check.
+   * @returns `true` if the object is false or not defined, `false` otherwise.
+   */
+  export function isFalsyObj(obj?: Obj): boolean
+  /**
+   * Checks if an object is deeply falsy.
+   *
+   * @param obj - The object to check.
+   * @returns `true` if the object is false or not a valid object (e.g., null or undefined), `false` otherwise.
+   */
+  export function isDeepFalsyObj(obj?: Obj): boolean
   /**
    * Checks if a value is an `Error`.
    *

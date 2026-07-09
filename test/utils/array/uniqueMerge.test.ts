@@ -16,7 +16,7 @@ describe('uniqueMerge', () => {
     expect(result).toEqual(['a', 'b', 'c'])
   })
 
-  it('should handle objects with reference equality', () => {
+  it('handles objects with reference equality', () => {
     const obj1 = { id: 1 }
     const obj2 = { id: 2 }
     const arr1 = [obj1, obj1]
@@ -26,27 +26,27 @@ describe('uniqueMerge', () => {
     expect(result.length).toBe(2) // Objects are unique by reference
   })
 
-  it('should handle when second array is undefined', () => {
+  it('handles when second array is undefined', () => {
     const arr1 = [1, 2, 2]
     const result = uniqueMerge(arr1)
     expect(result).toEqual([1, 2])
   })
 
-  it('should handle empty first array', () => {
+  it('handles empty first array', () => {
     const arr1: number[] = []
     const arr2 = [1, 2, 2]
     const result = uniqueMerge(arr1, arr2)
     expect(result).toEqual([1, 2])
   })
 
-  it('should handle both arrays empty', () => {
+  it('handles both arrays empty', () => {
     const arr1: number[] = []
     const arr2: number[] = []
     const result = uniqueMerge(arr1, arr2)
     expect(result).toEqual([])
   })
 
-  it('should handle mixed primitive types', () => {
+  it('handles mixed primitive types', () => {
     const arr1 = [1, 'a', true]
     const arr2 = ['a', true, 2] as (number | string | boolean)[]
     const result = uniqueMerge(arr1, arr2)

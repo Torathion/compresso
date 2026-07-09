@@ -2,19 +2,19 @@ import { describe, it, expect } from 'vitest'
 import { arrRangesIndexOf } from 'src'
 
 describe('arrRangesIndexOf', () => {
-  it('should return -1 for empty array', () => {
+  it('returns -1 for empty array', () => {
     expect(arrRangesIndexOf([], 5)).toBe(-1)
   })
 
-  it('should return -1 for array with odd length', () => {
+  it('returns -1 for array with odd length', () => {
     expect(arrRangesIndexOf([1, 2, 3], 5)).toBe(-1)
   })
 
-  it('should return -1 when value is less than first range', () => {
+  it('returns -1 when value is less than first range', () => {
     expect(arrRangesIndexOf([2, 4, 6, 8], 1)).toBe(-1)
   })
 
-  it('should return -1 when value is greater than last range', () => {
+  it('returns -1 when value is greater than last range', () => {
     expect(arrRangesIndexOf([2, 4, 6, 8], 9)).toBe(-1)
   })
 
@@ -34,7 +34,7 @@ describe('arrRangesIndexOf', () => {
     expect(arrRangesIndexOf(arr, 8)).toBe(1) // right boundary of second range
   })
 
-  it('should handle multiple ranges correctly', () => {
+  it('handles multiple ranges correctly', () => {
     const arr = [1, 3, 5, 7, 9, 11, 13, 15]
     expect(arrRangesIndexOf(arr, 2)).toBe(0) // in [1,3]
     expect(arrRangesIndexOf(arr, 6)).toBe(1) // in [5,7]
@@ -42,12 +42,12 @@ describe('arrRangesIndexOf', () => {
     expect(arrRangesIndexOf(arr, 14)).toBe(3) // in [13,15]
   })
 
-  it('should return -1 for value between ranges', () => {
+  it('returns -1 for value between ranges', () => {
     const arr = [1, 3, 6, 8]
     expect(arrRangesIndexOf(arr, 5)).toBe(-1) // between [1,3] and [6,8]
   })
 
-  it('should handle single range pair', () => {
+  it('handles single range pair', () => {
     const arr = [1, 5]
     expect(arrRangesIndexOf(arr, 3)).toBe(0)
     expect(arrRangesIndexOf(arr, 1)).toBe(0)
@@ -56,7 +56,7 @@ describe('arrRangesIndexOf', () => {
     expect(arrRangesIndexOf(arr, 6)).toBe(-1)
   })
 
-  it('should handle negative numbers', () => {
+  it('handles negative numbers', () => {
     const arr = [-5, -3, 0, 2]
     expect(arrRangesIndexOf(arr, -4)).toBe(0)
     expect(arrRangesIndexOf(arr, 1)).toBe(1)

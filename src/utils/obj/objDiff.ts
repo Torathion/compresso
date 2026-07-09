@@ -1,8 +1,7 @@
 import type { Obj } from 'typestar'
-import { hasProp } from 'src/constants'
-import isEmptyObj from '../guards/isEmptyObj'
-import isObj from '../guards/isObj'
+import { hasProp, keysOf } from 'src/constants'
 
+// Preserve your original loose object check so Arrays are processed as Objects!
 const isObject = (o: unknown): o is object => o != undefined && typeof o === 'object'
 
 /**
@@ -19,32 +18,44 @@ export default function objDiff<T>(before: T, after: T, preserved?: (string | nu
   // Same reference, do not process any further
   if (before === after) return {}
 
-  // Do not process any further if it's primitive
-  if (!isObject(before) || !isObject(after)) return after // return updated after
-  const updated: Obj = {}
+  // Do not process any further if it's primitive (Allows Arrays through!)
+  if (!isObject(before) || !isObject(after)) return after
 
-  for (const key in before) {
+  const updated: Obj = {}
+  let hasChanges = false // Tracks if we actually added anything to `updated`
+
+  const beforeKeys = keysOf(before)
+  let b = beforeKeys.length
+  while (b-- > 0) {
+    const key = beforeKeys[b]
     if (!hasProp(after, key)) {
       updated[key] = undefined
+      hasChanges = true
     }
   }
 
-  for (const key in after) {
+  // 2. Replaces `for...in after`
+  const afterKeys = keysOf(after)
+  let a = afterKeys.length
+  while (a-- > 0) {
+    const key = afterKeys[a]
     if (hasProp(before, key)) {
-      const difference = objDiff(before[key], after[key], preserved)
+      const difference = objDiff((before as any)[key], (after as any)[key], preserved)
 
-      // Only insert into update object if the difference object has properties or the difference is a primitive value.
-      if (!isEmptyObj(difference) || !isObj(difference)) {
+      if (!isObject(difference) || keysOf(difference).length > 0) {
         updated[key] = difference
+        hasChanges = true
       }
     } else {
-      updated[key] = after[key]
+      updated[key] = (after as any)[key]
+      hasChanges = true
     }
   }
 
-  // Preserve specified properties when the difference object is not empty.
-  if (preserved && !isEmptyObj(updated)) {
-    for (const key of preserved) {
+  if (preserved && hasChanges) {
+    let p = preserved.length
+    while (p-- > 0) {
+      const key = preserved[p]
       if (hasProp(after, key)) {
         updated[key] = (after as Obj)[key]
       }

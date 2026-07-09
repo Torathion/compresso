@@ -2,5 +2,6 @@
     "format": "group",
     "root": ".",
     "upgrade": true,
-    "reject": ["typescript"]
+    "reject": ["typescript", "eslint"],
+    "cooldown": "1d"
 }

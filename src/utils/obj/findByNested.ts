@@ -20,6 +20,7 @@ import isObj from '../guards/isObj'
 export default function findByNested<T extends Obj>(source: T[], key: string, value: unknown): T | undefined {
   const segments = key.includes('.') ? key.split('.') : [key]
   const depth = segments.length
+
   for (let i = 0, len = source.length; i <= len; i++) {
     let current = source[i]
 

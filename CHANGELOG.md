@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## [1.6.0] 07-09-2026
+
+### :star: Added
+
+- New Utilities:
+  - `isFalsyObj`
+  - `isDeepFalsyObj`
+
+- New Aliases:
+  - `Object.is` -> `eq`
+
+### :rocket: Performance
+
+- Further improvements for array algorithms, especially massive performance improvement for object key iterating algorithms (`equalsObj`, `deepEqualsObj`, `objDiff`, ...)
+  - This was accomplished by looking at how [fast-equals](https://www.npmjs.com/package/fast-equals) iterates through keys of objects:
+    - It uses decrementing while loop (`while(i-- > 0)`) instead of `for (const key of obj)`
+    - I had to remove my over-engineered key retrieval utility which was accidentally exported as well
+
 ## [1.5.0] 03-31-2026
 
 ### :star: Added
