@@ -14,7 +14,8 @@ export default function deepArrEquals(arr1: MaybeArray<Arr>, arr2: unknown[]): b
   const len = arr1.length
   if (len !== arr2.length) return false
   let v1, v2
-  for (let i = len - 1; i >= 0; i--) {
+  let i = len
+  while (i-- > 0) {
     v1 = arr1[i]
     v2 = arr2[i]
     // Checks need to be separated like this for all tests to pass

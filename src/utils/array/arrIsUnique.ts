@@ -10,7 +10,8 @@ export default function arrIsUnique<T>(arr: WithReadonly<Arr<T>>): boolean {
   if (!arr.length) return false
   const set = new Set()
   let item
-  for (let i = arr.length - 1; i >= 0; i--) {
+  let i = arr.length
+  while (i-- > 0) {
     item = arr[i]
     if (set.has(item)) return false
     set.add(item)

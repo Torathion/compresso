@@ -17,6 +17,7 @@ import type { Arr, WithReadonly } from 'typestar'
 export default function arrEquals<T>(arr1: WithReadonly<Arr<T>>, arr2: Arr<T>): boolean {
   const len = arr1.length
   if (len !== arr2.length) return false
-  for (let i = len - 1; i >= 0; i--) if (arr1[i] !== arr2[i]) return false
+  let i = len
+  while (i-- > 0) if (arr1[i] !== arr2[i]) return false
   return true
 }
