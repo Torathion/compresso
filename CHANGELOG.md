@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.6.1] 07-10-2026
+
+... I forgot to rebuild the library. It was too tired last night.
+
 ## [1.6.0] 07-09-2026
 
 ### :star: Added
